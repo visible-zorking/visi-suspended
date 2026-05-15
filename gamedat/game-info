@@ -11,8 +11,8 @@
 # However, they didn't have the source code names, so I have done
 # additional work in matching up to the ZIL code.
 
-# Functions (high memory): "CodeArea" from reform
-# Strings (high memory): "StringArea" from reform
+# Functions (high memory): 0x5EA2
+# Strings (high memory): 0xFA04
 
 # Source files in arbitrary (alphabetical) order.
 # The second number is the order that code is generated in the game file.
