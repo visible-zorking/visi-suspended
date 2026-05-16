@@ -37,12 +37,12 @@ export function AboutPage()
             <div className="AboutPage">
                 <h2>What&#x2019;s going on?</h2>
                 <p>
-                    You are playing Suspended, the classic Infocom text adventure.
+                    You are playing <i>Suspended,</i> the classic Infocom text adventure.
                     And you are watching the Z-machine execute the game,
                     live, as you play.
                 </p>
                 <p>
-                    (In case it&#x2019;s not obvious: <em>SPOILERS</em> for Suspended.
+                    (In case it&#x2019;s not obvious: <em>SPOILERS</em> for <i>Suspended.</i>
                     The source code gives away every secret and solution in the game.
                     The whole point of this project is to demonstrate how
                     Infocom games work!)
@@ -59,8 +59,9 @@ export function AboutPage()
                     Look at the
                     {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'objtree') }>World</a>{' '}
                     tab for a start.
-                    This shows every object and room in the game.
-                    ### INTRO....
+                    This shows every object and room in the game.{' '}
+                    The robot you are controlling, ###, is shown in
+                    the topmost room.
                 </p>
                 <p>
                     The other tabs display other aspects of the Z-machine.
@@ -86,19 +87,37 @@ export function AboutPage()
                 </p>
                 <p>
                     <Commentary topic={ 'ABOUT' } />
-                    Click on the green buttons to see commentary about
-                    Suspended&#x2019;s implementation. Notes, trivia, whatever came
+                    Click on the green buttons to see commentary about{' '}
+                    <i>Suspended</i>&#x2019;s implementation. Notes, trivia, whatever came
                     into my head as I was building the Visible Zorker!
                 </p>
                 <h2>The Underground Complex</h2>
                 <p>
                     The <a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'feelies') }>Feelies</a>{' '}
-                    tab is particularly important. ###
+                    tab is particularly important. <i>Suspended</i>{' '}
+                    is an unusual game: you control six robots moving
+                    around the map. You must coordinate their efforts
+                    to complete the game. The Feelies tab explains the
+                    special commands you will need to manage the robots.
                 </p>
-                <h2>Which version is this?</h2>
                 <p>
-                    Suspended was ###.
-                    As with Zork, it was built using a proprietary system
+                    <i>Suspended</i>{' '}
+                    originally came with a full-color map and six chips to
+                    track your robots&#x2019; locations. The
+                    {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'map') }>Map</a>{' '}
+                    tab handles this for you.
+                </p>
+                <h2>About this release</h2>
+                <p>
+                    <i>Suspended</i> was the first Infocom game designed by
+                    Michael Berlyn. Berlyn was not one of the original{' '}
+                    <i>Zork</i> creators, but he was already an industry veteran
+                    with the adventure games <i>Oo-Topos</i> and
+                    {' '}<i>Cyborg</i> (Sentient Software).
+                </p>
+                <p>
+                    As with all of Infocom&#x2019;s games,{' '}
+                    <i>Suspended</i> was built using a proprietary system
                     called{' '}
                     <ExtWebLink url={ 'https://blog.zarfhome.com/2019/04/what-is-zil-anyway' } text={ 'ZIL' } />.
                     (For &#x201C;Zork Implementation Language&#x201D;.)
@@ -109,14 +128,25 @@ export function AboutPage()
                     &#x201C;840521&#x201D; shows the compile date.)
                 </p>
                 <p>
-                    ### MAC/AMIGA
-                    was included in the &#x201C;
+                    There are actually two different versions of
+                    &#x201C;Release 8&#x201D;, dated a year apart.
+                    The only difference is that this (1984)
+                    version was adjusted for the (brand-new!) Macintosh, which
+                    supported proportional fonts. Certain displays in
+                    the game are given a &#x201C;fixed-width&#x201D; flag
+                    so that the tables line up properly.
+                </p>
+                <p>
+                    This release is the one most commonly seen today,
+                    because it was included in the &#x201C;
                     <ExtWebLink url={ 'https://archive.org/details/lost-treasures-of-infocom' } text={ 'Lost Treasures of Infocom' } />
                     &#x201D; collection and later collections.
+                    (Except for the Amiga version of LTOI, which had the
+                    1983 &#x201C;Release 8&#x201D; for some reason!)
                     Archived evidence indicates that Infocom continued
                     updating the source. The last known version is undated
-                    but was intended for the version 4 Z-machine, so perhaps
-                    1985.
+                    but was intended for the &#x201C;EZIP&#x201D; Z-machine
+                    (version 4), so perhaps 1985.
                 </p>
                 <h2>Sources and acknowledgements</h2>
                 <p>
@@ -154,7 +184,8 @@ export function AboutPage()
                     Feelie scans ###.
                 </p>
                 <p>
-                    Suspended itself was originally written by Michael Berlyn.
+                    <i>Suspended</i> itself was originally written
+                    by Michael Berlyn.
                     It is copyright 1983 (etc) by Infocom,
                     then Activision, then renamed to Mediagenic,
                     then Bobby Kotick bought it and renamed it Activision,
@@ -162,14 +193,14 @@ export function AboutPage()
                     then Microsoft consumed the lot.
                 </p>
                 <p>
-                    Thus, the Suspended source code is copyright 2025 by
+                    Thus, the <i>Suspended</i> source code is copyright 2025 by
                     Microsoft. Microsoft has not released this game as
                     open source, but I&#x2019;m going at it regardless.
                 </p>
                 <p>
                     Aside from the above, the Visible Zorker is copyright
                     2025-2026 by Andrew Plotkin. MIT license;{' '}
-                    <ExtWebLink url={ 'https://github.com/visible-zorking/visi-zork3' } text={ 'Github repo' } />.
+                    <ExtWebLink url={ 'https://github.com/visible-zorking/visi-suspended' } text={ 'Github repo' } />.
                 </p>
                 <h2>Patreon supporters</h2>
                 <ul className="PatreonList">
