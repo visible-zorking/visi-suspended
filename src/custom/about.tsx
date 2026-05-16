@@ -133,7 +133,7 @@ export function AboutPage()
                     The only difference is that this (1984)
                     version was adjusted for the (brand-new!) Macintosh, which
                     supported proportional fonts. Certain displays in
-                    the game are given a &#x201C;fixed-width&#x201D; flag
+                    the game are given a <code>fixed-width</code> flag
                     so that the tables line up properly.
                 </p>
                 <p>
