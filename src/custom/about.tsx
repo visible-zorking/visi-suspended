@@ -151,12 +151,7 @@ export function AboutPage()
                     Infocom&#x2019;s Zork hint maps.
                 </p>
                 <p>
-                    Feelie scans courtesy of the{' '}
-                    <ExtWebLink url={ 'https://www.mocagh.org/loadpage.php?getgame=starcrossfolio' } text={ 'Museum of Computer Adventure Game History' } />.
-                    See also the{' '}
-                    <ExtWebLink url={ 'https://archive.org/details/starcross-infocom' } text={ 'Internet Archive' } />.
-                    My reproduction of the mass detector chart is archived{' '}
-                    <ExtWebLink url={ 'https://archive.org/details/Infocom_Suspended_Chart_Recreation' } text={ 'here' } />.
+                    Feelie scans ###.
                 </p>
                 <p>
                     Suspended itself was originally written by Michael Berlyn.
