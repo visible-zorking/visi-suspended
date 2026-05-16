@@ -33,6 +33,62 @@ SourceFile 13 setup.zil    15
 SourceFile 14 syntax.zil   3
 SourceFile 15 verbs.zil    9
 
+# Attribute X CLIMBBIT
+# Attribute X CONTBIT
+# Attribute X CUTABLEBIT
+# Attribute X CUTBIT
+# Attribute X FIXABLEBIT
+# Attribute X FURNITURE
+# Attribute X INVISIBLE
+# Attribute X NDESCBIT
+# Attribute X ONBIT
+# Attribute X OPENBIT
+# Attribute X RLANDBIT
+# Attribute X RMUNGBIT
+# Attribute X SEARCHBIT
+# Attribute X SURFACEBIT
+# Attribute X TAKEBIT
+# Attribute X TOOLBIT
+# Attribute X TOUCHBIT
+# Attribute X TRANSBIT
+# Attribute X TRYTAKEBIT
+# Attribute X TURNBIT
+# Attribute X VEHBIT
+# Attribute X VICBIT
+# Attribute X VILLAIN
+# Attribute X WEARABLEBIT
+# Attribute X WEARBIT
+
+# Property X ACTION
+# Property X CLC-TXT
+# Property X CONTFCN
+# Property X CORRIDOR
+# Property X DESCFCN
+# Property X DIAL
+# Property X GLOBAL
+# Property X LINE
+# Property X OBJDESCS
+# Property X ROBOT
+# Property X ROOMDESCS
+# Property X STATION
+# Property X SYNONYM
+Property 10 ADJECTIVE  ADJS
+Property 13 PSEUDO  WORDRTNS
+Property 17 NW  DIR
+Property 18 NE  DIR
+Property 19 SW  DIR
+Property 20 SE  DIR
+Property 21 IN  DIR
+Property 22 OUT  DIR
+Property 23 DOWN  DIR
+Property 24 UP  DIR
+Property 25 SOUTH  DIR
+Property 26 WEST  DIR
+Property 27 EAST  DIR
+Property 28 NORTH  DIR
+### 29?
+Property 30 CAPACITY  INT
+Property 31 SIZE  INT
 
 Object 1 CIRCLE2
 Object 2 CIRCLE3
