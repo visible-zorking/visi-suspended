@@ -33,31 +33,36 @@ SourceFile 13 setup.zil    15
 SourceFile 14 syntax.zil   3
 SourceFile 15 verbs.zil    9
 
-# Attribute X CUTABLEBIT
-# Attribute X CUTBIT
-# Attribute X FIXABLEBIT
-# Attribute X RMUNGBIT
-# Attribute X TOOLBIT
-# Attribute X TRYTAKEBIT
-# Attribute X VICBIT
-# Attribute X VILLAIN
-# Attribute X WEARBIT
-# Attribute X TURNBIT
 
 Attribute 2 ONBIT
 Attribute 3 RLANDBIT
 Attribute 4 NDESCBIT
+Attribute 5 FIXABLEBIT
 Attribute 6 TRANSBIT
 Attribute 7 SEARCHBIT
 Attribute 8 OPENBIT
+Attribute 9 CUTBIT
+Attribute 10 TRYTAKEBIT
 Attribute 11 SURFACEBIT
 Attribute 12 TOUCHBIT
 Attribute 13 INVISIBLE
+Attribute 14 TURNBIT
+Attribute 15 WEARBIT
 Attribute 16 FURNITURE
+### 17?
 Attribute 18 TAKEBIT
 Attribute 19 CONTBIT
+### 20?
+### 21?
+Attribute 22 CUTABLEBIT
+Attribute 23 TOOLBIT
+Attribute 24 VICBIT
+### 25?
+Attribute 26 RMUNGBIT
 Attribute 27 CLIMBBIT
 Attribute 28 VEHBIT
+### 29?
+Attribute 30 VILLAIN
 Attribute 31 WEARABLEBIT
 
 Property 2 DIAL  INT
