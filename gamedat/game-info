@@ -166,9 +166,9 @@ Object 73 NEXT-FRIED
 Object 74 SOCKET1
 Object 75 FIRST-FRIED
 Object 76 BASKET
-# Object 77: "obj" CHIP1 CHIP2
-# Object 78: "obj" CHIP1 CHIP2
-# Object 79: "chip" CHIPS0 FIRST-FRIED NEXT-FRIED
+Object 77 CHIP2
+Object 78 CHIP1
+Object 79 CHIPS0
 Object 80 PANEL
 Object 81 HOME
 Object 82 HELL
