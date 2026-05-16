@@ -49,19 +49,19 @@ Attribute 13 INVISIBLE
 Attribute 14 TURNBIT
 Attribute 15 WEARBIT
 Attribute 16 FURNITURE
-### 17?
+Attribute 17 READBIT
 Attribute 18 TAKEBIT
 Attribute 19 CONTBIT
-### 20?
-### 21?
+Attribute 20 FOODBIT
+Attribute 21 DRINKBIT
 Attribute 22 CUTABLEBIT
 Attribute 23 TOOLBIT
 Attribute 24 VICBIT
-### 25?
+Attribute 25 DOORBIT
 Attribute 26 RMUNGBIT
 Attribute 27 CLIMBBIT
 Attribute 28 VEHBIT
-### 29?
+Attribute 29 WEAPONBIT
 Attribute 30 VILLAIN
 Attribute 31 WEARABLEBIT
 
