@@ -227,7 +227,7 @@ Object 190 LOCAL-GLOBALS
 Object 191 GLOBAL-OBJECTS
 
 
-Global 0 HERE
+Global 0 HERE  OBJ
 Global 1 SCORE
 Global 2 MOVES
 Global 3 FED-UP
@@ -242,15 +242,15 @@ Global 11 ARRIVAL-QUIPS
 Global 12 GOAL-TABLES
 Global 13 MORE-STUCKS
 Global 14 STUCK-QUIPS
-Global 15 COR-256
-Global 16 COR-128
-Global 17 COR-64
-Global 18 COR-32
-Global 19 COR-16
-Global 20 COR-8
-Global 21 COR-4
-Global 22 COR-2
-Global 23 COR-1
+Global 15 COR-256  DATA
+Global 16 COR-128  DATA
+Global 17 COR-64  DATA
+Global 18 COR-32  DATA
+Global 19 COR-16  DATA
+Global 20 COR-8  DATA
+Global 21 COR-4  DATA
+Global 22 COR-2  DATA
+Global 23 COR-1  DATA
 Global 24 TRANSFER-TABLE
 Global 25 F-LINE
 Global 26 E-LINE
@@ -282,7 +282,7 @@ Global 51 ORDER-RCD
 Global 52 WALK-INSULTS
 Global 53 IRIS-TV-QUIPS
 Global 54 ROFF
-Global 55 OLD-WINNER
+Global 55 OLD-WINNER  OBJ
 Global 56 TELL-QUIPS
 Global 57 PLUGOUTS
 Global 58 PLUG-LOCS
@@ -423,10 +423,10 @@ Global 192 CAR-FULL
 Global 193 NUM-EXT
 Global 194 LOAD-MAX
 Global 195 LOAD-ALLOWED
-Global 196 WINNER-HERE
-Global 197 LOW-DIRECTION
+Global 196 WINNER-HERE  OBJ
+Global 197 LOW-DIRECTION  PROP
 Global 198 BIGFIX
-Global 199 PREPOSITIONS
-Global 200 ACTIONS
-Global 201 PREACTIONS
-Global 202 VERBS
+Global 199 PREPOSITIONS  table created from SYNTAX
+Global 200 ACTIONS  table created from SYNTAX
+Global 201 PREACTIONS  table created from SYNTAX
+Global 202 VERBS  table created from SYNTAX
