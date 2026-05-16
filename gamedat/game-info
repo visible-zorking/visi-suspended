@@ -17,3 +17,18 @@
 # Source files in arbitrary (alphabetical) order.
 # The second number is the order that code is generated in the game file.
 # (Which is, usually, the same order that the files are included.)
+SourceFile 1 suspended.zil 1
+SourceFile 2 clock.zil     5
+SourceFile 3 crufty.zil    8
+SourceFile 4 globals.zil   4
+SourceFile 5 goal.zil      13
+SourceFile 6 macros.zil    2
+SourceFile 7 main.zil      6
+SourceFile 8 objects.zil   12
+SourceFile 9 parser.zil    7
+SourceFile 10 people.zil   14
+SourceFile 11 robots.zil   10
+SourceFile 12 rooms.zil    11
+SourceFile 13 setup.zil    15
+SourceFile 14 syntax.zil   3
+SourceFile 15 verbs.zil    9
