@@ -12,7 +12,7 @@ export const sourcefile_presentation_list: string[] = [
     'objects.zil',
     'robots.zil',
     'people.zil',
-    'global.zil',
+    'globals.zil',
     'goal.zil',
     'main.zil',
     'setup.zil',
