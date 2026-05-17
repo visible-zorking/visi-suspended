@@ -500,3 +500,10 @@ Global 202 VERBS  table created from SYNTAX
 
 MapExtraConn - HALLWAY-JUNCTION NORTH HUMAN-ENTRY
 MapExtraConn - HUMAN-ENTRY SOUTH HALLWAY-JUNCTION
+MapExtraConn - HALL-END EAST CAR-AREA
+MapExtraConn - CAR-AREA WEST HALL-END
+MapExtraConn - STERILE-AREA WEST UD-TUBE
+# HELL isn't a real room, so we map it last (using the DISTANT special
+# direction)
+MapExtraConn - CPU-ROOM DISTANT HELL
+MapExtraConn - HELL DISTANT CPU-ROOM
