@@ -14,9 +14,35 @@ export function AboutPage()
 
     let lastupdate = '__VISIZORKDATE__';
 
+    let curroom = '???';
+    let winnername = '???';
+
     let map: Map<number, ZObject> = new Map();
     for (let tup of zstate.objects) {
         map.set(tup.onum, tup);
+    }
+
+    let winner = zstate.globals[114];  // WINNER
+    if (true) {
+        let obj = gamedat_object_ids.get(winner);
+        if (obj) {
+            winnername = obj.name;
+        }
+    }
+    
+    let advroom: number = winner;
+    while (true) {
+        let tup = map.get(advroom);
+        if (!tup || tup.parent == 0 || tup.parent == gamedat_ids.ROOMS)
+            break;
+        advroom = tup.parent;
+    }
+
+    if (advroom != winner) {
+        let obj = gamedat_object_ids.get(advroom);
+        if (obj) {
+            curroom = obj.name;
+        }
     }
     
     function evhan_click_tab(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, tab: string) {
@@ -60,8 +86,13 @@ export function AboutPage()
                     {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'objtree') }>World</a>{' '}
                     tab for a start.
                     This shows every object and room in the game.{' '}
-                    The robot you are controlling, ###, is shown in
-                    the topmost room.
+                    The robot you are controlling,{' '}
+                    <code>{ winnername }</code>,
+                    is shown in the topmost room:{' '}
+                    <code>{ curroom }</code>.
+                    Listed with you are the objects in that room
+                    (although you may not be able to see them, as
+                    each robot has specific senses).
                 </p>
                 <p>
                     The other tabs display other aspects of the Z-machine.
