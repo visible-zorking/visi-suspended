@@ -29,7 +29,13 @@ function gamedat_ids_specific(gamedat_ids)
     gamedat_ids.ROOMS = gamedat_object_names.get('ROOMS').onum;
     gamedat_ids.GLOBAL_OBJECTS = gamedat_object_names.get('GLOBAL-OBJECTS').onum;
     gamedat_ids.LOCAL_GLOBALS = gamedat_object_names.get('LOCAL-GLOBALS').onum;
-    //###gamedat_ids.ADVENTURER = gamedat_object_names.get('ADVENTURER').onum;
+    gamedat_ids.IRIS = gamedat_object_names.get('IRIS').onum;
+    gamedat_ids.WALDO = gamedat_object_names.get('WALDO').onum;
+    gamedat_ids.SENSA = gamedat_object_names.get('SENSA').onum;
+    gamedat_ids.AUDA = gamedat_object_names.get('AUDA').onum;
+    gamedat_ids.POET = gamedat_object_names.get('POET').onum;
+    gamedat_ids.WHIZ = gamedat_object_names.get('WHIZ').onum;
+    gamedat_ids.PEOPLE = gamedat_object_names.get('PEOPLE').onum;
     gamedat_ids.STARTROOM = gamedat_object_names.get('CPU-ROOM').onum;
     gamedat_ids.PSEUDO_OBJECT = gamedat_object_names.get('PSEUDO-OBJECT').onum;
 

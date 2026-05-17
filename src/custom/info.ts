@@ -23,3 +23,7 @@ export const sourcefile_presentation_list: string[] = [
     'clock.zil',
     'crufty.zil',
 ];
+
+export const robot_names: string[] = [
+    'NONE', 'IRIS', 'WALDO', 'SENSA', 'AUDA', 'POET', 'WHIZ', 'PEOPLE'
+];
