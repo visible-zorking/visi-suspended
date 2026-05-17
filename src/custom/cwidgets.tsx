@@ -10,8 +10,7 @@ import { gamedat_ids, gamedat_distances, gamedat_object_treesort } from '../visi
 export function contains_label(obj: ObjectData) : string
 {
     if (!obj.isroom) {
-        // ...or other NPCs
-        if (obj.onum == gamedat_ids.ADVENTURER)
+        if (obj.onum == gamedat_ids.PEOPLE)
             return 'carries';
         else
             return 'contains'
@@ -21,7 +20,7 @@ export function contains_label(obj: ObjectData) : string
 
 export function sorter_for_key(key: number) : (roots:ZObject[], map:Map<number, ZObject>) => void
 {
-    let originobj: number = gamedat_ids.ADVENTURER;
+    let originobj: number = gamedat_ids.ADVENTURER; //### pick-a-bot
 
     return function(roots: ZObject[], map: Map<number, ZObject>) {
         let advroom = originobj;
@@ -65,6 +64,14 @@ export function global_value_display(tag: string, value: number, glo: GlobalData
 
 export function property_value_display(tag: string, values: number[]) : JSX.Element|null
 {
+    switch (tag) {
+        
+    case 'CORBITS':
+        return (
+            <VarShowCorridorBits value={ values[0]*0x100+values[1] } />
+        )
+    }
+    
     return null;
 }
 
@@ -90,5 +97,24 @@ export function stack_call_arg_display(tag: string, value: number) : JSX.Element
     }
 
     return null;
+}
+
+export function VarShowCorridorBits({ value }: { value:number })
+{
+    let ls: string[] = [];
+
+    for (let bit=1; bit < 65536; bit *= 2) {
+        if (value & bit)
+            ls.push(''+bit);
+    }
+
+    if (!ls.length)
+        ls.push('0');
+    
+    let str = ls.join(',');
+    
+    return (
+        <i>cor-{ str }</i>
+    );
 }
 
