@@ -6,6 +6,7 @@ import { ObjectData, GlobalData } from '../visi/gametypes';
 import { StackCallCtx } from '../visi/context';
 import { ArgShowObject, ArgShowProperty } from '../visi/actshowers';
 import { gamedat_ids, gamedat_distances, gamedat_object_treesort } from '../visi/gamedat';
+import { robot_names } from './info';
 
 export function contains_label(obj: ObjectData) : string
 {
@@ -59,6 +60,15 @@ export function ObjListSorter({ followKey, setFollowKey } : { followKey:number, 
 
 export function global_value_display(tag: string, value: number, glo: GlobalData) : JSX.Element|null
 {
+    switch (tag) {
+        
+    case 'ROBOTNUM':
+        return (
+            <VarShowRobotNum value={ value } />
+        );
+        
+    }
+    
     return null;
 }
 
@@ -69,6 +79,11 @@ export function property_value_display(tag: string, values: number[]) : JSX.Elem
     case 'CORBITS':
         return (
             <VarShowCorridorBits value={ values[0]*0x100+values[1] } />
+        )
+        
+    case 'ROBOTNUM':
+        return (
+            <VarShowRobotNum value={ values[0]*0x100+values[1] } />
         )
     }
     
@@ -97,6 +112,19 @@ export function stack_call_arg_display(tag: string, value: number) : JSX.Element
     }
 
     return null;
+}
+
+export function VarShowRobotNum({ value }: { value:number })
+{
+    if (value < robot_names.length) {
+        return (
+            <span>{ value }:<i>{ robot_names[value].toLowerCase() }</i></span>
+        );
+    }
+    
+    return (
+        <span>{ value }:???</span>
+    );
 }
 
 export function VarShowCorridorBits({ value }: { value:number })
