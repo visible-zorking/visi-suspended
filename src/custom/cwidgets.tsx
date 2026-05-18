@@ -23,6 +23,10 @@ export function contains_label(obj: ObjectData) : string
 export function sorter_for_key(key: number, zstate: ZStatePlus) : (roots:ZObject[], map:Map<number, ZObject>) => void
 {
     let originobj: number = zstate.globals[114];  // WINNER
+    const followObjs = [ 0, gamedat_ids.IRIS, gamedat_ids.WALDO, gamedat_ids.SENSA, gamedat_ids.AUDA, gamedat_ids.POET, gamedat_ids.WHIZ, gamedat_ids.HUMANS ];
+    if (key) {
+        originobj = followObjs[key];
+    }
 
     return function(roots: ZObject[], map: Map<number, ZObject>) {
         let advroom = originobj;
@@ -52,9 +56,54 @@ export function sorter_for_key(key: number, zstate: ZStatePlus) : (roots:ZObject
 
 export function ObjListSorter({ followKey, setFollowKey } : { followKey:number, setFollowKey:(v:number)=>void })
 {
+    let follow: string = 'auto';
+    const followKeys = ['auto', 'iris', 'waldo', 'sensa', 'auda', 'poet', 'whiz'];
+    if (followKey >= 0 && followKey < followKeys.length)
+        follow = followKeys[followKey];
+    
+    function evhan_follow_change(val: string) {
+        switch (val) {
+        case 'auto':
+            setFollowKey(0);
+            break;
+        case 'iris':
+            setFollowKey(1);
+            break;
+        case 'waldo':
+            setFollowKey(2);
+            break;
+        case 'sensa':
+            setFollowKey(3);
+            break;
+        case 'auda':
+            setFollowKey(4);
+            break;
+        case 'poet':
+            setFollowKey(5);
+            break;
+        case 'whiz':
+            setFollowKey(6);
+            break;
+        }
+    }
+    
     return (
         <div>
-            (Following Adventurer)
+            Follow{' '}
+            <input id="followauto_radio" type="radio" name="follow" value="auto" checked={ follow=='auto' } onChange={ (ev) => evhan_follow_change('auto') } />
+            <label htmlFor="followauto_radio">Auto</label>{' '}
+            <input id="followiris_radio" type="radio" name="follow" value="iris" checked={ follow=='iris' } onChange={ (ev) => evhan_follow_change('iris') } />
+            <label htmlFor="followiris_radio">Iris</label>
+            <input id="followwaldo_radio" type="radio" name="follow" value="waldo" checked={ follow=='waldo' } onChange={ (ev) => evhan_follow_change('waldo') } />
+            <label htmlFor="followwaldo_radio">Waldo</label>
+            <input id="followsensa_radio" type="radio" name="follow" value="sensa" checked={ follow=='sensa' } onChange={ (ev) => evhan_follow_change('sensa') } />
+            <label htmlFor="followsensa_radio">Sensa</label>
+            <input id="followauda_radio" type="radio" name="follow" value="auda" checked={ follow=='auda' } onChange={ (ev) => evhan_follow_change('auda') } />
+            <label htmlFor="followauda_radio">Auda</label>
+            <input id="followpoet_radio" type="radio" name="follow" value="poet" checked={ follow=='poet' } onChange={ (ev) => evhan_follow_change('poet') } />
+            <label htmlFor="followpoet_radio">Poet</label>
+            <input id="followwhiz_radio" type="radio" name="follow" value="whiz" checked={ follow=='whiz' } onChange={ (ev) => evhan_follow_change('whiz') } />
+            <label htmlFor="followwhiz_radio">Whiz</label>
         </div>
     );
 }
