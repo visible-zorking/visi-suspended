@@ -87,6 +87,11 @@ export function property_value_display(tag: string, values: number[]) : JSX.Elem
             <VarShowRobotNum value={ values[0]*0x100+values[1] } />
         )
         
+    case 'ROOMDESCS':
+        return (
+            <PropShowRoomDescs value={ values[0]*0x100+values[1] } />
+        )
+        
     case 'CLCTXT':
         return (
             <PropShowCLCText value={ values[0]*0x100+values[1] } />
@@ -149,6 +154,41 @@ export function VarShowCorridorBits({ value }: { value:number })
     
     return (
         <i>cor-{ str }</i>
+    );
+}
+
+export function PropShowRoomDescs({ value }: { value:number })
+{
+    let rctx = useContext(ReactCtx);
+    let table = gamedat_objproptable_addrs.get(value);
+
+    if (!table || !table.values) {
+        return (
+            <i>???{ value }</i>
+        );
+    }
+
+    let counter = 0;
+    let rowls: JSX.Element[] = []
+    for (let val of table.values) {
+        if (val) {
+            rowls.push(
+                <li key={ counter }>
+                    <span className="IndexLabel">{ robot_names[counter+1] }:</span>
+                    {' '}<VarShowString value={ val } />
+                </li>
+            );
+        }
+        counter++;
+    }
+    
+    return (
+        <>
+            { (rctx.shownumbers ?
+               <span className="ShowAddr">({ value })</span>
+               : null) }
+            <ul className="IndexTextList">{ rowls }</ul>
+        </>
     );
 }
 
