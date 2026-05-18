@@ -1,4 +1,8 @@
 
+.RobotSelector input {
+    margin-left: 4px;
+}
+
 ul.DataList ul.IndexTextList {
     list-style: none;
     padding-left: 0px;

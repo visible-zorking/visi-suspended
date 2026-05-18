@@ -91,7 +91,7 @@ export function ObjListSorter({ followKey, setFollowKey } : { followKey:number, 
     }
     
     return (
-        <div>
+        <div className="RobotSelector">
             Follow{' '}
             <input id="followauto_radio" type="radio" name="follow" value="auto" checked={ follow=='auto' } onChange={ (ev) => evhan_follow_change('auto') } />
             <label htmlFor="followauto_radio">Auto</label>{' '}
