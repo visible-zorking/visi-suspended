@@ -27,7 +27,11 @@ export function FeeliesPage()
                     you must take into account.
                 </p>
                 <p>
-                    Sounds like fun, right?
+                    Sounds like fun, right? Remember that damage in the
+                    Complex means catastrophe on the surface. The
+                    &#x201C;Score&#x201D; shown in the status line is
+                    the current death rate in thousands of people{' '}
+                    <em>per turn</em>. Work fast.
                 </p>
                 <h2>Special commands:</h2>
                 <p>
@@ -92,6 +96,31 @@ export function FeeliesPage()
                     <code>ARR</code> &#x2014;
                     Short for <code>ALL ROBOTS, REPORT</code>. This
                     takes several turns.
+                    <br/>
+                    <code>SCORE</code> &#x2014;
+                    Show the current total of casualties on the surface.
+                    <br/>
+                    <code>DRAG <i>robot</i> to <i>room</i></code> &#x2014;
+                    Haul a disfunctional robot to another location.
+                    <br/>
+                    <code>FOLLOW <i>robot</i></code> &#x2014;
+                    Have a robot follow another.
+                    <br/>
+                    <code>STOP</code> &#x2014;
+                    Tell a robot in transit to halt where it is.
+                    <br/>
+                    <code>LISTEN</code> &#x2014;
+                    Tell Auda to activate her audio circuits and relay
+                    what she hears directly to you.
+                    <br/>
+                    <code>PLUG IN</code> &#x2014;
+                    Whiz has the ability to connect to
+                    the CLC pedestals in the four Peripheral rooms.
+                    He can then query the Library Core about various
+                    topics.
+                    <br/>
+                    <code>QUERY ABOUT <i>topic</i></code> &#x2014;
+                    Have Whiz query the pedestal he is plugged into.
                 </p>
                 <h2>The map</h2>
                 <p>
