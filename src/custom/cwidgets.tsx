@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useContext, createContext } from 'react';
 
-import { ZObject } from '../visi/zstate';
+import { ZStatePlus, ZObject } from '../visi/zstate';
 import { ObjectData, GlobalData } from '../visi/gametypes';
 import { ReactCtx, StackCallCtx } from '../visi/context';
 import { ArgShowObject, ArgShowProperty } from '../visi/actshowers';
@@ -20,9 +20,9 @@ export function contains_label(obj: ObjectData) : string
     return '';
 }
 
-export function sorter_for_key(key: number) : (roots:ZObject[], map:Map<number, ZObject>) => void
+export function sorter_for_key(key: number, zstate: ZStatePlus) : (roots:ZObject[], map:Map<number, ZObject>) => void
 {
-    let originobj: number = gamedat_ids.ADVENTURER; //### pick-a-bot
+    let originobj: number = zstate.globals[114];  // WINNER
 
     return function(roots: ZObject[], map: Map<number, ZObject>) {
         let advroom = originobj;
