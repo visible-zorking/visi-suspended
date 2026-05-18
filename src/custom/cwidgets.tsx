@@ -175,14 +175,6 @@ export function PropShowCLCText({ value }: { value:number })
                 </li>
             );
         }
-        else {
-            rowls.push(
-                <li key={ counter }>
-                    <span className="IndexLabel">{ labels[counter] }:</span>
-                    {' '}<i>none</i>
-                </li>
-            );
-        }
         counter++;
     }
     
