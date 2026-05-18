@@ -3,7 +3,7 @@ import { useState, useContext, createContext } from 'react';
 
 import { ZObject } from '../visi/zstate';
 import { ObjectData, GlobalData } from '../visi/gametypes';
-import { StackCallCtx } from '../visi/context';
+import { ReactCtx, StackCallCtx } from '../visi/context';
 import { ArgShowObject, ArgShowProperty } from '../visi/actshowers';
 import { VarShowString } from '../visi/globshow';
 import { gamedat_ids, gamedat_distances, gamedat_object_treesort, gamedat_objproptable_addrs } from '../visi/gamedat';
@@ -154,6 +154,7 @@ export function VarShowCorridorBits({ value }: { value:number })
 
 export function PropShowCLCText({ value }: { value:number })
 {
+    let rctx = useContext(ReactCtx);
     let table = gamedat_objproptable_addrs.get(value);
 
     if (!table || !table.values) {
@@ -179,6 +180,11 @@ export function PropShowCLCText({ value }: { value:number })
     }
     
     return (
-        <ul className="IndexTextList">{ rowls }</ul>
+        <>
+            { (rctx.shownumbers ?
+               <span className="ShowAddr">({ value })</span>
+               : null) }
+            <ul className="IndexTextList">{ rowls }</ul>
+        </>
     );
 }
