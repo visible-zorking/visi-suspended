@@ -5,7 +5,8 @@ import { ZObject } from '../visi/zstate';
 import { ObjectData, GlobalData } from '../visi/gametypes';
 import { StackCallCtx } from '../visi/context';
 import { ArgShowObject, ArgShowProperty } from '../visi/actshowers';
-import { gamedat_ids, gamedat_distances, gamedat_object_treesort } from '../visi/gamedat';
+import { VarShowString } from '../visi/globshow';
+import { gamedat_ids, gamedat_distances, gamedat_object_treesort, gamedat_objproptable_addrs } from '../visi/gamedat';
 import { robot_names } from './info';
 
 export function contains_label(obj: ObjectData) : string
@@ -85,6 +86,11 @@ export function property_value_display(tag: string, values: number[]) : JSX.Elem
         return (
             <VarShowRobotNum value={ values[0]*0x100+values[1] } />
         )
+        
+    case 'CLCTXT':
+        return (
+            <PropShowCLCText value={ values[0]*0x100+values[1] } />
+        )
     }
     
     return null;
@@ -146,3 +152,41 @@ export function VarShowCorridorBits({ value }: { value:number })
     );
 }
 
+export function PropShowCLCText({ value }: { value:number })
+{
+    let table = gamedat_objproptable_addrs.get(value);
+
+    if (!table || !table.values) {
+        return (
+            <i>???{ value }</i>
+        );
+    }
+
+    const labels = ['Tech', 'Advi', 'Hist'];
+
+    let counter = 0;
+    let rowls: JSX.Element[] = []
+    for (let val of table.values) {
+        if (val) {
+            rowls.push(
+                <li key={ counter }>
+                    <span className="IndexLabel">{ labels[counter] }:</span>
+                    {' '}<VarShowString value={ val } />
+                </li>
+            );
+        }
+        else {
+            rowls.push(
+                <li key={ counter }>
+                    <span className="IndexLabel">{ labels[counter] }:</span>
+                    {' '}<i>none</i>
+                </li>
+            );
+        }
+        counter++;
+    }
+    
+    return (
+        <ul className="IndexTextList">{ rowls }</ul>
+    );
+}
