@@ -23,7 +23,7 @@ export function contains_label(obj: ObjectData) : string
 export function sorter_for_key(key: number, zstate: ZStatePlus) : (roots:ZObject[], map:Map<number, ZObject>) => void
 {
     let originobj: number = zstate.globals[114];  // WINNER
-    const followObjs = [ 0, gamedat_ids.IRIS, gamedat_ids.WALDO, gamedat_ids.SENSA, gamedat_ids.AUDA, gamedat_ids.POET, gamedat_ids.WHIZ, gamedat_ids.HUMANS ];
+    const followObjs = [ 0, gamedat_ids.IRIS, gamedat_ids.WALDO, gamedat_ids.SENSA, gamedat_ids.AUDA, gamedat_ids.POET, gamedat_ids.WHIZ, gamedat_ids.PEOPLE ];
     if (key) {
         originobj = followObjs[key];
     }
@@ -57,7 +57,7 @@ export function sorter_for_key(key: number, zstate: ZStatePlus) : (roots:ZObject
 export function ObjListSorter({ followKey, setFollowKey } : { followKey:number, setFollowKey:(v:number)=>void })
 {
     let follow: string = 'auto';
-    const followKeys = ['auto', 'iris', 'waldo', 'sensa', 'auda', 'poet', 'whiz'];
+    const followKeys = ['auto', 'iris', 'waldo', 'sensa', 'auda', 'poet', 'whiz', 'people'];
     if (followKey >= 0 && followKey < followKeys.length)
         follow = followKeys[followKey];
     
@@ -84,6 +84,9 @@ export function ObjListSorter({ followKey, setFollowKey } : { followKey:number, 
         case 'whiz':
             setFollowKey(6);
             break;
+        case 'people':
+            setFollowKey(7);
+            break;
         }
     }
     
@@ -104,6 +107,8 @@ export function ObjListSorter({ followKey, setFollowKey } : { followKey:number, 
             <label htmlFor="followpoet_radio">Poet</label>
             <input id="followwhiz_radio" type="radio" name="follow" value="whiz" checked={ follow=='whiz' } onChange={ (ev) => evhan_follow_change('whiz') } />
             <label htmlFor="followwhiz_radio">Whiz</label>
+            <input id="followpeople_radio" type="radio" name="follow" value="people" checked={ follow=='people' } onChange={ (ev) => evhan_follow_change('people') } />
+            <label htmlFor="followpeople_radio">Humans</label>
         </div>
     );
 }
