@@ -35853,6 +35853,8 @@ var bundle = (function (exports) {
               return (jsxRuntimeExports.jsx(VarShowRobotNum, { value: values[0] * 0x100 + values[1] }));
           case 'ROOMDESCS':
               return (jsxRuntimeExports.jsx(PropShowRoomDescs, { value: values[0] * 0x100 + values[1] }));
+          case 'OBJDESCS':
+              return (jsxRuntimeExports.jsx(PropShowObjDescs, { value: values[0] * 0x100 + values[1] }));
           case 'CLCTXT':
               return (jsxRuntimeExports.jsx(PropShowCLCText, { value: values[0] * 0x100 + values[1] }));
       }
@@ -35900,6 +35902,51 @@ var bundle = (function (exports) {
           if (val) {
               rowls.push(jsxRuntimeExports.jsxs("li", { children: [jsxRuntimeExports.jsxs("span", { className: "IndexLabel", children: [robot_names[counter + 1], ":"] }), ' ', jsxRuntimeExports.jsx(VarShowString, { value: val })] }, counter));
           }
+          counter++;
+      }
+      return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [(rctx.shownumbers ?
+                  jsxRuntimeExports.jsxs("span", { className: "ShowAddr", children: ["(", value, ")"] })
+                  : null), jsxRuntimeExports.jsx("ul", { className: "IndexTextList", children: rowls })] }));
+  }
+  function PropShowObjDescs({ value }) {
+      let rctx = reactExports.useContext(ReactCtx);
+      let table = gamedat_objproptable_addrs.get(value);
+      if (!table || !table.values) {
+          return (jsxRuntimeExports.jsxs("i", { children: ["???", value] }));
+      }
+      let counter = 0;
+      let rowls = [];
+      rowls.push(jsxRuntimeExports.jsx("li", { children: "Visibility:" }, counter));
+      counter++;
+      let index = 0;
+      while (index < 6) {
+          let val = table.values[index];
+          if (val) {
+              rowls.push(jsxRuntimeExports.jsxs("li", { children: [jsxRuntimeExports.jsxs("span", { className: "IndexLabel", children: [robot_names[index + 1], ":"] }), ' ', (val == 1 ? jsxRuntimeExports.jsx("i", { children: "default" }) : jsxRuntimeExports.jsx(VarShowString, { value: val }))] }, counter));
+          }
+          index++;
+          counter++;
+      }
+      rowls.push(jsxRuntimeExports.jsx("li", { children: "Name:" }, counter));
+      counter++;
+      index = 0;
+      while (index < 6) {
+          let val = table.values[6 + index];
+          if (val) {
+              rowls.push(jsxRuntimeExports.jsxs("li", { children: [jsxRuntimeExports.jsxs("span", { className: "IndexLabel", children: [robot_names[index + 1], ":"] }), ' ', jsxRuntimeExports.jsx(VarShowString, { value: val })] }, counter));
+          }
+          index++;
+          counter++;
+      }
+      rowls.push(jsxRuntimeExports.jsx("li", { children: "Description:" }, counter));
+      counter++;
+      index = 0;
+      while (index < 6) {
+          let val = table.values[12 + index];
+          if (val) {
+              rowls.push(jsxRuntimeExports.jsxs("li", { children: [jsxRuntimeExports.jsxs("span", { className: "IndexLabel", children: [robot_names[index + 1], ":"] }), ' ', jsxRuntimeExports.jsx(VarShowString, { value: val })] }, counter));
+          }
+          index++;
           counter++;
       }
       return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [(rctx.shownumbers ?
@@ -37113,7 +37160,7 @@ var bundle = (function (exports) {
   function AboutPage() {
       let rctx = reactExports.useContext(ReactCtx);
       let zstate = rctx.zstate;
-      let lastupdate = 'May 17, 2026';
+      let lastupdate = 'May 19, 2026';
       let curroom = '???';
       let winnername = '???';
       let map = new Map();
