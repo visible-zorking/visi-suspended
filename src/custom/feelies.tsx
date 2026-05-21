@@ -152,7 +152,7 @@ export function FeeliesPage()
                 <hr />
                 <p>
                     And to set the scene, this was the manual cover, which
-                    was hidden behind the package's serene cryogenic
+                    was hidden behind the package&#x2019;s serene cryogenic
                     mask:
                 </p>
                 <FeelieLink url={ 'manual-cover-front.jpeg' } width={ 250 } height={ 333 } text={ 'Manual front cover' } />
