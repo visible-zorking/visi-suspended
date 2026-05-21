@@ -499,6 +499,7 @@ RoutineType - ARRIVAL OBJ
 RoutineType - CLAUSE - - WORD
 RoutineType - COR-DIR OBJ OBJ
 RoutineType - CORRIDOR-CHECK TABLE OBJ
+RoutineType - DEAD-FCN OBJ
 RoutineType - DIR-PRINT PROP
 RoutineType - DO-THE-MOVE OBJ OBJ OBJ
 RoutineType - DRAGGING? OBJ
