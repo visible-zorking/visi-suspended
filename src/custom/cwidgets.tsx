@@ -271,12 +271,13 @@ export function PropShowObjDescs({ value }: { value:number })
                 <RobotStringList arr={ table.values.slice(0, 6) } label="Describe" />
                 <RobotStringList arr={ table.values.slice(6, 12) } label="Name" />
                 <RobotStringList arr={ table.values.slice(12, 18) } label="Examine" />
+                <RobotStringList arr={ table.values.slice(18, 19) } label="Touch" sublabel="POET" />
             </ul>
         </>
     );
 }
 
-function RobotStringList({ arr, label }: { arr:number[], label:string })
+function RobotStringList({ arr, label, sublabel }: { arr:number[], label:string, sublabel?:string })
 {
     let map: { [key: number]: number[] } = {};
     let keys: number[] = [];
@@ -301,7 +302,10 @@ function RobotStringList({ arr, label }: { arr:number[], label:string })
     let rowls = keys.map((val) => {
         let indexes = map[val];
         let label = 'ALL';
-        if (indexes.length < 6) {
+        if (sublabel) {
+            label = sublabel;
+        }
+        else if (indexes.length < 6) {
             let rls = indexes.map((index) => robot_names[index+1]);
             label = rls.join(', ');
         }
