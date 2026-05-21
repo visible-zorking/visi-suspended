@@ -68,14 +68,14 @@ export function FeeliesPage()
                     <br/>
                     <code>POET, GO TO ENTRY AREA</code>
                     <br/>
-                    You can name any room in the Complex, or even another
+                    You can name any room in the Complex, or another
                     robot:
                     <br/>
                     <code>WALDO, GO TO POET</code>
                     <br/>
                     It will probably take the robot several turns to reach
                     its destination. You can command other robots
-                    in the meantime. In fact, you can have several robots
+                    in the meantime. You can even have several robots
                     in transit at the same time. They will report in when
                     they arrive.
                 </p>
@@ -101,7 +101,7 @@ export function FeeliesPage()
                     Show the current total of casualties on the surface.
                     <br/>
                     <code>DRAG <i>robot</i> to <i>room</i></code> &#x2014;
-                    Haul a disfunctional robot to another location.
+                    Haul a dysfunctional robot to another location.
                     <br/>
                     <code>FOLLOW <i>robot</i></code> &#x2014;
                     Have a robot follow another.

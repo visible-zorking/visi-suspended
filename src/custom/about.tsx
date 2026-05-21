@@ -212,9 +212,6 @@ export function AboutPage()
                     Infocom&#x2019;s Zork hint maps.
                 </p>
                 <p>
-                    Feelie scans ###.
-                </p>
-                <p>
                     <i>Suspended</i> itself was originally written
                     by Michael Berlyn.
                     It is copyright 1983 (etc) by Infocom,
