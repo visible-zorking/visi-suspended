@@ -24,16 +24,16 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     showgrid="false"
+     showgrid="true"
      inkscape:zoom="1"
-     inkscape:cx="774"
-     inkscape:cy="1082.5"
+     inkscape:cx="1176.5"
+     inkscape:cy="1607.5"
      inkscape:window-width="1864"
      inkscape:window-height="1239"
-     inkscape:window-x="577"
-     inkscape:window-y="48"
+     inkscape:window-x="576"
+     inkscape:window-y="20"
      inkscape:window-maximized="0"
-     inkscape:current-layer="labellayer"><inkscape:grid
+     inkscape:current-layer="roomlayer"><inkscape:grid
        id="grid1"
        units="px"
        originx="0"
@@ -46,7 +46,7 @@
        opacity="0.14902"
        empspacing="5"
        enabled="true"
-       visible="false" /></sodipodi:namedview><style
+       visible="true" /></sodipodi:namedview><style
      id="style1">svg.DarkTheme { filter: invert(90%) hue-rotate(180deg); }
 #roomlayer rect { fill:#F8F0E8; stroke:#000; stroke-width:0.7; }
 #roomlayer rect.Selected { fill:#FFD080; }
@@ -811,8 +811,7 @@
      inkscape:label="Rooms"
      inkscape:groupmode="layer"
      id="roomlayer"
-     style="display:none"
-     sodipodi:insensitive="true"><rect
+     style="display:inline"><rect
        id="r-repair1"
        width="21.16666"
        height="19.843769"
@@ -1030,7 +1029,7 @@
        y="444.50003"
        ry="2.6458292"
        style="display:inline;fill:#c7c7c7;fill-opacity:0.503731;stroke:#000000;stroke-width:0.7" /><rect
-       id="rect12"
+       id="r-ne-passage2"
        width="21.166674"
        height="21.166677"
        x="292.36456"
@@ -1237,6 +1236,13 @@
        width="21.166674"
        height="21.166666"
        x="164.04166"
+       y="179.91667"
+       ry="2.6458292"
+       style="display:inline;fill:#c7c7c7;fill-opacity:0.503731;stroke:#000000;stroke-width:0.7" /><rect
+       id="r-ud-tube"
+       width="21.166674"
+       height="21.166666"
+       x="79.374992"
        y="179.91667"
        ry="2.6458292"
        style="display:inline;fill:#c7c7c7;fill-opacity:0.503731;stroke:#000000;stroke-width:0.7" /></g><g
