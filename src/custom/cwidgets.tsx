@@ -261,83 +261,74 @@ export function PropShowObjDescs({ value }: { value:number })
             <i>???{ value }</i>
         );
     }
-
-    let counter = 0;
-    let rowls: JSX.Element[] = [];
-
-    rowls.push(
-        <li key={ counter }>
-            Visibility:
-        </li>
-    );
-    counter++
-    
-    let index = 0;
-    while (index < 6) {
-        let val = table.values[index];
-        if (val) {
-            rowls.push(
-                <li key={ counter }>
-                    <span className="IndexLabel">{ robot_names[index+1] }:</span>
-                    {' '}
-                    { (val == 1 ? <i>default</i> : <VarShowString value={ val } />) }
-                </li>
-            );
-        }
-        index++;
-        counter++;
-    }
-    
-    rowls.push(
-        <li key={ counter }>
-            Name:
-        </li>
-    );
-    counter++
-    
-    index = 0;
-    while (index < 6) {
-        let val = table.values[6+index];
-        if (val) {
-            rowls.push(
-                <li key={ counter }>
-                    <span className="IndexLabel">{ robot_names[index+1] }:</span>
-                    {' '}<VarShowString value={ val } />
-                </li>
-            );
-        }
-        index++;
-        counter++;
-    }
-    
-    rowls.push(
-        <li key={ counter }>
-            Description:
-        </li>
-    );
-    counter++
-    
-    index = 0;
-    while (index < 6) {
-        let val = table.values[12+index];
-        if (val) {
-            rowls.push(
-                <li key={ counter }>
-                    <span className="IndexLabel">{ robot_names[index+1] }:</span>
-                    {' '}<VarShowString value={ val } />
-                </li>
-            );
-        }
-        index++;
-        counter++;
-    }
     
     return (
         <>
             { (rctx.shownumbers ?
                <span className="ShowAddr">({ value })</span>
                : null) }
-            <ul className="IndexTextList">{ rowls }</ul>
+            <ul className="IndexGroupList">
+                <RobotStringList arr={ table.values.slice(0, 6) } label="Describe" />
+                <RobotStringList arr={ table.values.slice(6, 12) } label="Name" />
+                <RobotStringList arr={ table.values.slice(12, 18) } label="Examine" />
+            </ul>
+        </>
+    );
+}
+
+function RobotStringList({ arr, label }: { arr:number[], label:string })
+{
+    let map: { [key: number]: number[] } = {};
+    let keys: number[] = [];
+
+    let index = 0;
+    for (let val of arr) {
+        if (val) {
+            if (!map[val]) {
+                map[val] = [ index ];
+                keys.push(val);
+            }
+            else {
+                map[val].push(index);
+            }
+        }
+        index++;
+    }
+
+    if (keys.length == 0)
+        return null;
+
+    let rowls = keys.map((val) => {
+        let indexes = map[val];
+        let label = 'ALL';
+        if (indexes.length < 6) {
+            let rls = indexes.map((index) => robot_names[index+1]);
+            label = rls.join(', ');
+        }
+        if (val == 1) {
+            return (
+                <li key={ val }>
+                    <span className="IndexLabel">{ label }:</span>{' '}
+                    <i>default</i>
+                </li>
+            );
+        }
+        else {
+            return (
+                <li key={ val }>
+                    <span className="IndexLabel">{ label }:</span>{' '}
+                    <VarShowString value={ val } />
+                </li>
+            );
+        }
+    });
+
+    return (
+        <>
+            <li className="IndexGroupLabel">{ label }:</li>
+            <ul className="IndexTextList">
+                { rowls }
+            </ul>
         </>
     );
 }
@@ -353,7 +344,7 @@ export function PropShowCLCText({ value }: { value:number })
         );
     }
 
-    const labels = ['Tech', 'Advi', 'Hist'];
+    const labels = ['TECH', 'ADVI', 'HIST'];
 
     let counter = 0;
     let rowls: JSX.Element[] = []

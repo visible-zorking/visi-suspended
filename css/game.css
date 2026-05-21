@@ -16,6 +16,21 @@ ul.IndexTextList .IndexLabel {
     font-size: 85%;
 }
 
+ul.DataList ul.IndexGroupList {
+    list-style: none;
+    padding-left: 0px;
+}
+
+ul.IndexGroupList li.IndexGroupLabel {
+    text-indent: 0px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+ul.DataList ul.IndexGroupList ul.IndexTextList {
+    padding-left: 20px;
+}
+
 .FeeliesPage h2 {
     font-size: 110%;
     font-family: "Libre Baskerville", serif;
