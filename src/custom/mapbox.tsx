@@ -22,8 +22,7 @@ export function GameMapBox()
                     <label htmlFor="showtransit">Show Transit Layer</label>
                 </div>
             </div>
-            <div className="ScrollXYContent">
-            </div>
+            <GameMap />
         </div>
     );
 }
