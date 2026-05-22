@@ -1,4 +1,24 @@
 
+.MapBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.MapBox .MapTabBar {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 32px;
+}
+
+.MapBox .ScrollXYContent {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 1px;
+    background: yellow;
+}
+
 .RobotSelector input {
     margin-left: 4px;
 }
