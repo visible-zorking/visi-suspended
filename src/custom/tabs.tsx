@@ -7,7 +7,6 @@ import { gamedat_ids } from '../visi/gamedat';
 import { CallActivity } from '../visi/activity';
 import { TimerTable } from '../visi/timers';
 import { GrammarTable } from '../visi/grammar';
-import { GameMap } from '../visi/map';
 import { ObjectTree } from '../visi/objtree';
 import { ObjectAttrList, ObjectPropList } from '../visi/objlist';
 import { ObjectPage } from '../visi/objpage';
@@ -15,11 +14,12 @@ import { GlobalState } from '../visi/globstate';
 import { SourceFileList } from '../visi/filelist';
 import { FeeliesPage } from './feelies';
 import { AboutPage } from './about';
+import { GameMapBox } from './mapbox';
 
 const tab_list = [
     [ 'activity', 'Activity' ],
     [ 'objtree', 'World' ],
-    //[ 'map', 'Map' ],
+    [ 'map', 'Map' ],
     [ 'globals', 'State' ],
     [ 'timers', 'Timers' ],
     [ 'grammar', 'Grammar' ],
@@ -71,11 +71,9 @@ export function TabbedPane()
     case 'activity':
         tabcontent = <CallActivity />;
         break;
-    /*
     case 'map':
-        tabcontent = <GameMap mobiles={ mobiles } />;
+        tabcontent = <GameMapBox />;
         break;
-    */
     case 'globals':
         tabcontent = <GlobalState />;
         break;
