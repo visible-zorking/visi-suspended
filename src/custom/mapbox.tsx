@@ -1,7 +1,12 @@
 import React from 'react';
 import { useContext, useState } from 'react';
 
-import { GameMap } from '../visi/map';
+import { robot_names, robot_ids } from './info';
+import { gamedat_object_ids, gamedat_roominfo_names } from '../visi/gamedat';
+import { ObjectData } from '../visi/gametypes';
+import { ZStatePlus } from '../visi/zstate';
+
+import { GameMap, OptPosition, ExtraToggle } from '../visi/map';
 import { ObjListSorter } from './cwidgets';
 
 export function GameMapBox()
@@ -22,7 +27,43 @@ export function GameMapBox()
                     <label htmlFor="showtransit">Show Transit Layer</label>
                 </div>
             </div>
-            <GameMap />
+            <GameMap extras={ map_adjustments } />
         </div>
     );
 }
+
+function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
+{
+    let ls = [];
+
+    for (let mobid of robot_ids) {
+        if (!mobid) {
+            continue;
+        }
+        let mobj = gamedat_object_ids.get(mobid);
+        if (!mobj) {
+            continue;
+        }
+        let mobkey = "mob-" + mobj.name.toLowerCase();
+        let mobcen: OptPosition = null;
+        let mobloc: ObjectData|undefined;
+        let zobj = zstate.objects[mobid-1];
+        if (zobj.parent) {
+            mobloc = gamedat_object_ids.get(zobj.parent);
+            if (mobloc) {
+                let throomobj = gamedat_roominfo_names.get(mobloc.name);
+                if (throomobj) {
+                    mobcen = throomobj.center;
+                }
+            }
+        }
+        if (mobcen) {
+	    let robcen = { x:mobcen.x, y:mobcen.y+5 };
+            let mtransform = 'translate('+robcen.x+','+robcen.y+')';
+            ls.push({ id:mobkey, transform:mtransform });
+        }
+    }
+
+    return ls;
+}
+
