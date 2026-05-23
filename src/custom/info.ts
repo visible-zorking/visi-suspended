@@ -27,3 +27,6 @@ export const sourcefile_presentation_list: string[] = [
 export const robot_names: string[] = [
     'NONE', 'IRIS', 'WALDO', 'SENSA', 'AUDA', 'POET', 'WHIZ', 'PEOPLE'
 ];
+export const robot_ids: number[] = [
+    0, 158, 155, 152, 149, 146, 144, 140
+];
