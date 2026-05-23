@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext, useState } from 'react';
 
 import { robot_names, robot_ids } from './info';
-import { gamedat_object_ids, gamedat_roominfo_names } from '../visi/gamedat';
+import { gamedat_ids, gamedat_object_ids, gamedat_roominfo_names } from '../visi/gamedat';
 import { ObjectData } from '../visi/gametypes';
 import { ZStatePlus } from '../visi/zstate';
 
@@ -36,6 +36,29 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
 {
     let ls = [];
 
+    let mobmap = new Map<number, number[]>();
+
+    for (let mobid of robot_ids) {
+        if (!mobid)
+            continue;
+        let mobroom = mobid;
+        while (true) {
+            let robj = zstate.objects[mobroom-1];
+            if (!robj || robj.parent == 0 || robj.parent == gamedat_ids.ROOMS)
+                break;
+            mobroom = robj.parent;
+        }
+        if (mobroom && mobroom != mobid) {
+            var rls = mobmap.get(mobroom);
+            if (!rls) {
+                mobmap.set(mobroom, [ mobid ]);
+            }
+            else {
+                rls.push(mobid);
+            }
+        }
+    }
+    
     for (let mobid of robot_ids) {
         if (!mobid) {
             continue;
@@ -58,7 +81,7 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
             }
         }
         if (mobcen) {
-	    let robcen = { x:mobcen.x, y:mobcen.y+5 };
+            let robcen = { x:mobcen.x, y:mobcen.y+5 };
             let mtransform = 'translate('+robcen.x+','+robcen.y+')';
             ls.push({ id:mobkey, transform:mtransform });
         }
