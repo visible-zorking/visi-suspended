@@ -484,7 +484,7 @@ Global 191 WEDGE-PLACED
 Global 192 CAR-FULL
 Global 193 NUM-EXT
 Global 194 LOAD-MAX
-Global 195 LOAD-ALLOWED
+Global 195 LOAD-ALLOWED  UNUSED
 Global 196 WINNER-HERE  OBJ
 Global 197 LOW-DIRECTION  PROP
 Global 198 BIGFIX
@@ -510,6 +510,7 @@ RoutineType - GAME-COMMAND? ACTION
 RoutineType - GOAL? OBJ
 RoutineType - GWIM - - PREP
 RoutineType - IN-MOTION? OBJ
+RoutineType - JIGS-UP STR OBJ
 RoutineType - KILL-GOAL OBJ
 RoutineType - LKP OBJ TABLE
 RoutineType - MOVE-RBT OBJ OBJ
