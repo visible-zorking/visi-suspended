@@ -51,7 +51,11 @@ glob:NAME-TBL: The array of robots in [glob:ROFF] order. (With [obj:PEOPLE] as t
 
 glob:ROBOT-NAMES: The array of robot names, in [glob:ROFF] order. The robots’ object values are in [glob:NAME-TBL].
 
-glob:
+glob:LAST-ROOM: As the comment says, a table used by `FOLLOW`.
+
+glob:DEADBOTS: Indicates which robots are suffering from acid damage. The value is [set to 1|~src:GOAL-311] when a robot encounters acid; after 30 turns, the robot dies.
+
+rtn:SET-LAST-ROOM: Set up the [glob:LAST-ROOM] table (all robot locations) at the beginning of play.
 
 glob:HERE: In most Infocom games, `HERE` is the location of the [glob:WINNER]. In *Suspended*, `HERE` is the robot you are currently commanding. (Technically this is based on [glob:ROFF] rather than [glob:WINNER].)
 	Why the difference? Because the interpreter always displays `HERE` in top left of the status line, and in *Suspended*, that is a robot name.
@@ -94,6 +98,8 @@ attr:VILLAIN: Set for living beings ([obj:ME] and [obj:PEOPLE]).
 
 attr:VICBIT: Set for living beings and robots.
 
+attr:CUTBIT: Set for cut cables and robots which are out of commission.
+
 glob:P-WON: Set if the parser successfully parsed a command. (As opposed to a blank line or an error.)
 	No relation to whether the *player* has won.
 
@@ -109,9 +115,18 @@ TIMERS-LEGEND: A list of the timers running (or paused) in the timer table ([~gl
 
 rtn:GO: Set up the world at the start of the game. Start the timers. Print the banner. Set all those useful globals like [~glob:HERE] and [~glob:WINNER]. Do the inital `ARL` command.
 
+rtn:JIGS-UP: Handles the abrupt death of a robot. Sets the [attr:CUTBIT] flag and marks the robot as terminal in [glob:DEADBOTS].
+	(Acid damage is handled in the individual robot action routines.)
+
+### timers
+
+
+src:SUSPENDED-1: The game is titled *Suspension*, not *Suspended*, in most of the source code.
+	I got some cheap amusement out of telling my school friends, “I got *Suspended*!” (Which everybody heard as a serious school penalty rather than a game title.)
+
+obj:HELL: This exists only so that you can tell a robot `GO TO HELL`.
 
 ### SUPPLIES-NORTH
-### HELL
 ### TWOBOTS and bug
 ### ADJ-CHECK has starcross words
 ### PEOPLE.CLC-TXT
