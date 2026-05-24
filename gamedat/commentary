@@ -8,6 +8,30 @@
 
 ABOUT: Welcome to the commentary track!
 
+rtn:V-VERSION: Print the title, release, and serial number.
+	In 1982, Infocom briefly branded its games as “INTERLOGIC”. They had mostly switched to “interactive fiction” by 1984.
+
+GRAMMAR-LEGEND: This is the list of verb forms which the game recognizes. (Simple directions like `NORTH` are a special case; they’re not listed here.) These are compiled from the [SYNTAX|~src:SYNTAX-50] file.
+	Objects in a verb line have various flags which give hints about their usage. An object attribute (like `CLIMBBIT`) means that if the player doesn’t name an object, the parser will try to guess one with that attribute.
+	The other flag letters have specific meanings: **m**ultiple objects are accepted; the player must **h**ave the object; the player will automatically **t**ake the object; the object should be **i**n the room or **o**n the ground; the object should be **p**ossessed or **c**arried in a container. (Yes, they’re confusing. Infocom’s own docs say “No one really understands them except Stu” (Galley).)
+
+attr:RMUNGBIT: Not applied to real objects. `RMUNGBIT` is a hack used in grammar lines; it means the object is optional (but the preposition before it is required). This allows the parser to accept commands like [LOOK AROUND|~src:SYNTAX-225].
+
+glob:P-SYNTAX: The grammar line found when the most recent command was parsed. (Except for simple direction commands, which are a special case.) See the Grammar tab.
+
+
+OBJTREE-LEGEND: In this list, `Rooms` are rooms and `Items` are regular items. (Sometimes portable, sometimes not.)
+	`Scen` indicates scenery objects. These exist in multiple places; for example, the [~obj:MONITOR] is visible in all three Monitor rooms.
+	`Glob` indicates a global object, which is *always* visible, or at least mentionable. Topics that you can `QUERY ABOUT` are always global.
+
+obj:LOCAL-GLOBALS: This is a container for scenery objects like [~obj:MONITOR], which is visible from many locations in the game.
+
+
+src:GLOBALS-26: This refers to the word `MGCKJK` in [~obj:LOCAL-GLOBALS], above.
+	Why is this synonym necessary? Not clear! Most Infocom games have it (or a variation), but some say “No, this synonym doesn’t need to exist” instead.
+	If you type `EXAMINE MGCKJK`, the parser finds [~obj:local-globals]. But that object is nameless, so you get an empty or garbage reply. Go on, try `AUDA, EXAMINE MGCKJK`.
+
+
 prop:OBJDESCS: This property is a fount of information about how different robots see an object. It’s divided into three groups of six values, plus one more at the end.
 	The first group indicates how an object is initially described in the room. 1 means it’s listed in the general object list. 0 means the robot cannot perceive this object at all.
 	The second group gives the object’s common name for each robot. (These may all be the same.)
