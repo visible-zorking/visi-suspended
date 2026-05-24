@@ -6,7 +6,7 @@ import { gamedat_ids, gamedat_object_ids, gamedat_roominfo_names } from '../visi
 import { ObjectData } from '../visi/gametypes';
 import { ZStatePlus } from '../visi/zstate';
 
-import { GameMap, OptPosition, ExtraToggle } from '../visi/map';
+import { GameMap, OptPosition, ScrollCenterInfo, ExtraToggle } from '../visi/map';
 import { ObjListSorter } from './cwidgets';
 
 export function GameMapBox()
@@ -32,7 +32,7 @@ export function GameMapBox()
     );
 }
 
-function scroll_center(zstate:ZStatePlus, locname:string): OptPosition
+function scroll_center(zstate:ZStatePlus, locname:string): ScrollCenterInfo
 {
     let originobj: number = zstate.globals[114];  // WINNER
 ;
@@ -46,10 +46,7 @@ function scroll_center(zstate:ZStatePlus, locname:string): OptPosition
     if (mobroom && mobroom != originobj) {
         let roomdat = gamedat_object_ids.get(mobroom);
         if (roomdat) {
-            let throomobj = gamedat_roominfo_names.get(roomdat.name);
-            if (throomobj) {
-                return throomobj.center;
-            }
+            return { room: roomdat.name };
         }
     }
     
