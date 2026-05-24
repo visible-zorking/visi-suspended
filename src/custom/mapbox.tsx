@@ -27,9 +27,33 @@ export function GameMapBox()
                     <label htmlFor="showtransit">Show Transit Layer</label>
                 </div>
             </div>
-            <GameMap extras={ map_adjustments } />
+            <GameMap extras={ map_adjustments } scrollcenter={ scroll_center } />
         </div>
     );
+}
+
+function scroll_center(zstate:ZStatePlus, locname:string): OptPosition
+{
+    let originobj: number = zstate.globals[114];  // WINNER
+;
+    let mobroom = originobj;
+    while (true) {
+        let robj = zstate.objects[mobroom-1];
+        if (!robj || robj.parent == 0 || robj.parent == gamedat_ids.ROOMS)
+            break;
+        mobroom = robj.parent;
+    }
+    if (mobroom && mobroom != originobj) {
+        let roomdat = gamedat_object_ids.get(mobroom);
+        if (roomdat) {
+            let throomobj = gamedat_roominfo_names.get(roomdat.name);
+            if (throomobj) {
+                return throomobj.center;
+            }
+        }
+    }
+    
+    return null;
 }
 
 const room_offsets = [
