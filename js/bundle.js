@@ -34767,6 +34767,7 @@ var bundle = (function (exports) {
   const gamedat_actions = winany.gamedat_actions;
   const gamedat_sourcefiles = winany.gamedat_sourcefiles;
   const gamedat_distances = winany.gamedat_distances;
+  const gamedat_roominfo_names = winany.gamedat_roominfo_names;
   const gamedat_commentary = winany.gamedat_commentary;
   const gamedat_commentarymap = winany.gamedat_commentarymap;
   let assetdir = 'visiterp';
@@ -35181,6 +35182,9 @@ var bundle = (function (exports) {
   const robot_names = [
       'NONE', 'IRIS', 'WALDO', 'SENSA', 'AUDA', 'POET', 'WHIZ', 'PEOPLE'
   ];
+  const robot_ids = [
+      0, 158, 155, 152, 149, 146, 144, 140
+  ];
 
   function new_sourcelocstate() {
       return { loc: sourceloc_start(), lochi: false };
@@ -35293,7 +35297,7 @@ var bundle = (function (exports) {
   }
 
   function SourceView() {
-      let noderef = useRefDiv$1();
+      let noderef = useRefDiv$2();
       let rctx = reactExports.useContext(ReactCtx);
       let zstate = rctx.zstate;
       let atstart = (rctx.sourcelocpos == 0);
@@ -35539,7 +35543,7 @@ var bundle = (function (exports) {
           scrollel.scrollTop = linel.offsetTop - Math.floor(scrollel.offsetHeight * heightratio);
       }
   }
-  const useRefDiv$1 = () => reactExports.useRef(null);
+  const useRefDiv$2 = () => reactExports.useRef(null);
 
   /* The "(i)" button which displays an object detail page.
   */
@@ -35776,9 +35780,8 @@ var bundle = (function (exports) {
   }
   function sorter_for_key(key, zstate) {
       let originobj = zstate.globals[114]; // WINNER
-      const followObjs = [0, gamedat_ids.IRIS, gamedat_ids.WALDO, gamedat_ids.SENSA, gamedat_ids.AUDA, gamedat_ids.POET, gamedat_ids.WHIZ, gamedat_ids.PEOPLE];
       if (key) {
-          originobj = followObjs[key];
+          originobj = robot_ids[key];
       }
       return function (roots, map) {
           let advroom = originobj;
@@ -37168,7 +37171,7 @@ var bundle = (function (exports) {
   function AboutPage() {
       let rctx = reactExports.useContext(ReactCtx);
       let zstate = rctx.zstate;
-      let lastupdate = 'May 20, 2026';
+      let lastupdate = 'May 23, 2026';
       let curroom = '???';
       let winnername = '???';
       let map = new Map();
@@ -37225,16 +37228,280 @@ var bundle = (function (exports) {
           ev.preventDefault();
           rctx.setTab(tab);
       }
-      return (jsxRuntimeExports.jsx("div", { className: "ScrollContent", children: jsxRuntimeExports.jsxs("div", { className: "FeeliesPage", children: [jsxRuntimeExports.jsx("h2", { children: "Life as the Central Mentality" }), jsxRuntimeExports.jsxs("p", { children: ["In ", jsxRuntimeExports.jsx("i", { children: "Suspended" }), ", you are a cryogenically frozen \u201Cvolunteer\u201D in the facility that manages life on planet Contra. If something goes wrong in the Complex, you must coordinate the facility\u2019s six robots to repair the damage. Each robot has specific senses and capabilities which you must take into account."] }), jsxRuntimeExports.jsxs("p", { children: ["Sounds like fun, right? Remember that damage in the Complex means catastrophe on the surface. The \u201CScore\u201D shown in the status line is the current death rate in thousands of people", ' ', jsxRuntimeExports.jsx("em", { children: "per turn" }), ". Work fast."] }), jsxRuntimeExports.jsx("h2", { children: "Special commands:" }), jsxRuntimeExports.jsx("p", { children: "The game\u2019s original manual is reproduced below. Here is a quick overview:" }), jsxRuntimeExports.jsxs("p", { children: ["Any command can be directed to a specific robot:", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "WALDO, TAKE PLIERS" }), jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "SENSA, EXAMINE CABLE" }), jsxRuntimeExports.jsx("br", {}), "If you don\u2019t name a robot, your command will be directed to the same robot you last spoke to. The currently-controlled robot is shown in the upper left."] }), jsxRuntimeExports.jsxs("p", { children: ["You can direct a command to multiple robots:", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "POET AND WHIZ, GO TO CENTRAL CORE" }), jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "ALL ROBOTS, REPORT" }), jsxRuntimeExports.jsx("br", {}), "To instruct two robots to work together on a single task, you must say ", jsxRuntimeExports.jsx("code", { children: "BOTH" }), ":", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "BOTH POET AND IRIS, OPEN MANHOLE" })] }), jsxRuntimeExports.jsxs("p", { children: ["You can use normal direction commands (", jsxRuntimeExports.jsx("code", { children: "NORTH" }), ",", ' ', jsxRuntimeExports.jsx("code", { children: "SOUTH" }), ", etc) but it\u2019s more efficient to give a destination:", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "POET, GO TO ENTRY AREA" }), jsxRuntimeExports.jsx("br", {}), "You can name any room in the Complex, or another robot:", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "WALDO, GO TO POET" }), jsxRuntimeExports.jsx("br", {}), "It will probably take the robot several turns to reach its destination. You can command other robots in the meantime. You can even have several robots in transit at the same time. They will report in when they arrive."] }), jsxRuntimeExports.jsx("p", { children: "Other handy commands:" }), jsxRuntimeExports.jsxs("p", { children: [jsxRuntimeExports.jsx("code", { children: "REPORT LOCATION" }), " \u2014 Name the robot\u2019s location.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "REPORT" }), " \u2014 Give a full report, including room description and inventory.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "ARL" }), " \u2014 Short for ", jsxRuntimeExports.jsx("code", { children: "ALL ROBOTS, REPORT LOCATION" }), ".", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "ARR" }), " \u2014 Short for ", jsxRuntimeExports.jsx("code", { children: "ALL ROBOTS, REPORT" }), ". This takes several turns.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "SCORE" }), " \u2014 Show the current total of casualties on the surface.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsxs("code", { children: ["DRAG ", jsxRuntimeExports.jsx("i", { children: "robot" }), " to ", jsxRuntimeExports.jsx("i", { children: "room" })] }), " \u2014 Haul a dysfunctional robot to another location.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsxs("code", { children: ["FOLLOW ", jsxRuntimeExports.jsx("i", { children: "robot" })] }), " \u2014 Have a robot follow another.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "STOP" }), " \u2014 Tell a robot in transit to halt where it is.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "LISTEN" }), " \u2014 Tell Auda to activate her audio circuits and relay what she hears directly to you.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "PLUG IN" }), " \u2014 Whiz has the ability to connect to the CLC pedestals in the four Peripheral rooms. He can then query the Library Core about various topics.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsxs("code", { children: ["QUERY ABOUT ", jsxRuntimeExports.jsx("i", { children: "topic" })] }), " \u2014 Have Whiz query the pedestal he is plugged into."] }), jsxRuntimeExports.jsx("h2", { children: "The map" }), jsxRuntimeExports.jsxs("p", { children: ["The original game came with a map and six chips representing the robots. You could use these to track their locations as you played. In this version, you can follow along in the", ' ', jsxRuntimeExports.jsx("a", { className: "Internal", href: "#", onClick: (ev) => evhan_click_tab(ev, 'map'), children: "Map" }), ' ', "tab."] }), jsxRuntimeExports.jsx("h2", { children: "The manual" }), jsxRuntimeExports.jsxs("p", { children: ["Note: These images are scanned from the the honest-to-Frob copy of ", jsxRuntimeExports.jsx("i", { children: "Suspended" }), " that I played as a kid! They are from the original 1983 \u201CFolio\u201D release of the game. For a scan of the \u201CGrey Box\u201D manual, visit the", ' ', jsxRuntimeExports.jsx(ExtWebLink, { url: 'https://infodoc.plover.net/manuals/temp/suspende.pdf', text: 'InfoDoc Project' }), ". For high-resolution scans, visit the", ' ', jsxRuntimeExports.jsx(ExtWebLink, { url: 'https://archive.org/details/Suspended-Infocom-Apple', text: 'Internet Archive' }), "."] }), jsxRuntimeExports.jsx("hr", {}), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p1.jpeg', width: 250, height: 125, text: 'Letter from from the Contra Central Lottery Commission' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p2.jpeg', width: 250, height: 125, text: 'The Filtering Computers' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p3.jpeg', width: 250, height: 125, text: 'Robots: Communications and Characteristics' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p4.jpeg', width: 250, height: 125, text: 'The Central Library Core / Surface Systems' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p5.jpeg', width: 250, height: 125, text: 'Abridged List of Useful Commands' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p6.jpeg', width: 250, height: 125, text: 'Operator\u2019s Reference Chart' }), jsxRuntimeExports.jsx("hr", {}), jsxRuntimeExports.jsx("p", { children: "And to set the scene, this was the manual cover, which was hidden behind the package's serene cryogenic mask:" }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-cover-front.jpeg', width: 250, height: 333, text: 'Manual front cover' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-cover-back.jpeg', width: 250, height: 333, text: 'Manual back cover, with an introduction to Michael Berlyn.' })] }) }));
+      return (jsxRuntimeExports.jsx("div", { className: "ScrollContent", children: jsxRuntimeExports.jsxs("div", { className: "FeeliesPage", children: [jsxRuntimeExports.jsx("h2", { children: "Life as the Central Mentality" }), jsxRuntimeExports.jsxs("p", { children: ["In ", jsxRuntimeExports.jsx("i", { children: "Suspended" }), ", you are a cryogenically frozen \u201Cvolunteer\u201D in the facility that manages life on planet Contra. If something goes wrong in the Complex, you must coordinate the facility\u2019s six robots to repair the damage. Each robot has specific senses and capabilities which you must take into account."] }), jsxRuntimeExports.jsxs("p", { children: ["Sounds like fun, right? Remember that damage in the Complex means catastrophe on the surface. The \u201CScore\u201D shown in the status line is the current death rate in thousands of people", ' ', jsxRuntimeExports.jsx("em", { children: "per turn" }), ". Work fast."] }), jsxRuntimeExports.jsx("h2", { children: "Special commands:" }), jsxRuntimeExports.jsx("p", { children: "The game\u2019s original manual is reproduced below. Here is a quick overview:" }), jsxRuntimeExports.jsxs("p", { children: ["Any command can be directed to a specific robot:", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "WALDO, TAKE PLIERS" }), jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "SENSA, EXAMINE CABLE" }), jsxRuntimeExports.jsx("br", {}), "If you don\u2019t name a robot, your command will be directed to the same robot you last spoke to. The currently-controlled robot is shown in the upper left."] }), jsxRuntimeExports.jsxs("p", { children: ["You can direct a command to multiple robots:", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "POET AND WHIZ, GO TO CENTRAL CORE" }), jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "ALL ROBOTS, REPORT" }), jsxRuntimeExports.jsx("br", {}), "To instruct two robots to work together on a single task, you must say ", jsxRuntimeExports.jsx("code", { children: "BOTH" }), ":", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "BOTH POET AND IRIS, OPEN MANHOLE" })] }), jsxRuntimeExports.jsxs("p", { children: ["You can use normal direction commands (", jsxRuntimeExports.jsx("code", { children: "NORTH" }), ",", ' ', jsxRuntimeExports.jsx("code", { children: "SOUTH" }), ", etc) but it\u2019s more efficient to give a destination:", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "POET, GO TO ENTRY AREA" }), jsxRuntimeExports.jsx("br", {}), "You can name any room in the Complex, or another robot:", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "WALDO, GO TO POET" }), jsxRuntimeExports.jsx("br", {}), "It will probably take the robot several turns to reach its destination. You can command other robots in the meantime. You can even have several robots in transit at the same time. They will report in when they arrive."] }), jsxRuntimeExports.jsx("p", { children: "Other handy commands:" }), jsxRuntimeExports.jsxs("p", { children: [jsxRuntimeExports.jsx("code", { children: "REPORT LOCATION" }), " \u2014 Name the robot\u2019s location.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "REPORT" }), " \u2014 Give a full report, including room description and inventory.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "ARL" }), " \u2014 Short for ", jsxRuntimeExports.jsx("code", { children: "ALL ROBOTS, REPORT LOCATION" }), ".", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "ARR" }), " \u2014 Short for ", jsxRuntimeExports.jsx("code", { children: "ALL ROBOTS, REPORT" }), ". This takes several turns.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "SCORE" }), " \u2014 Show the current total of casualties on the surface.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsxs("code", { children: ["DRAG ", jsxRuntimeExports.jsx("i", { children: "robot" }), " to ", jsxRuntimeExports.jsx("i", { children: "room" })] }), " \u2014 Haul a dysfunctional robot to another location.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsxs("code", { children: ["FOLLOW ", jsxRuntimeExports.jsx("i", { children: "robot" })] }), " \u2014 Have a robot follow another.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "STOP" }), " \u2014 Tell a robot in transit to halt where it is.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "LISTEN" }), " \u2014 Tell Auda to activate her audio circuits and relay what she hears directly to you.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("code", { children: "PLUG IN" }), " \u2014 Whiz has the ability to connect to the CLC pedestals in the four Peripheral rooms. He can then query the Library Core about various topics.", jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsxs("code", { children: ["QUERY ABOUT ", jsxRuntimeExports.jsx("i", { children: "topic" })] }), " \u2014 Have Whiz query the pedestal he is plugged into."] }), jsxRuntimeExports.jsx("h2", { children: "The map" }), jsxRuntimeExports.jsxs("p", { children: ["The original game came with a map and six chips representing the robots. You could use these to track their locations as you played. In this version, you can follow along in the", ' ', jsxRuntimeExports.jsx("a", { className: "Internal", href: "#", onClick: (ev) => evhan_click_tab(ev, 'map'), children: "Map" }), ' ', "tab."] }), jsxRuntimeExports.jsx("h2", { children: "The manual" }), jsxRuntimeExports.jsxs("p", { children: ["Note: These images are scanned from the the honest-to-Frob copy of ", jsxRuntimeExports.jsx("i", { children: "Suspended" }), " that I played as a kid! They are from the original 1983 \u201CFolio\u201D release of the game. For a scan of the \u201CGrey Box\u201D manual, visit the", ' ', jsxRuntimeExports.jsx(ExtWebLink, { url: 'https://infodoc.plover.net/manuals/temp/suspende.pdf', text: 'InfoDoc Project' }), ". For high-resolution scans, visit the", ' ', jsxRuntimeExports.jsx(ExtWebLink, { url: 'https://archive.org/details/Suspended-Infocom-Apple', text: 'Internet Archive' }), "."] }), jsxRuntimeExports.jsx("hr", {}), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p1.jpeg', width: 250, height: 125, text: 'Letter from from the Contra Central Lottery Commission' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p2.jpeg', width: 250, height: 125, text: 'The Filtering Computers' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p3.jpeg', width: 250, height: 125, text: 'Robots: Communications and Characteristics' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p4.jpeg', width: 250, height: 125, text: 'The Central Library Core / Surface Systems' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p5.jpeg', width: 250, height: 125, text: 'Abridged List of Useful Commands' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-p6.jpeg', width: 250, height: 125, text: 'Operator\u2019s Reference Chart' }), jsxRuntimeExports.jsx("hr", {}), jsxRuntimeExports.jsx("p", { children: "And to set the scene, this was the manual cover, which was hidden behind the package\u2019s serene cryogenic mask:" }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-cover-front.jpeg', width: 250, height: 333, text: 'Manual front cover' }), jsxRuntimeExports.jsx(FeelieLink, { url: 'manual-cover-back.jpeg', width: 250, height: 333, text: 'Manual back cover, with an introduction to Michael Berlyn.' })] }) }));
   }
   function FeelieLink({ url, text, width, height }) {
       return (jsxRuntimeExports.jsxs("p", { className: "Feelie", children: [jsxRuntimeExports.jsx("a", { href: './pic/' + url, target: "_blank", children: jsxRuntimeExports.jsx("img", { src: './pic/thumb/' + url, width: width, height: height }) }), jsxRuntimeExports.jsx("br", {}), jsxRuntimeExports.jsx("a", { href: './pic/' + url, target: "_blank", children: text })] }));
   }
 
+  function GameMap({ filename, mobiles, extras, scrollcenter }) {
+      let scrollref = useRefDiv$1();
+      let mapref = useRefObject();
+      let rctx = reactExports.useContext(ReactCtx);
+      let zstate = rctx.zstate;
+      let dragstart = null;
+      let scrollstart = null;
+      let origdocsize = gamedat_ids.MAP_DOCSIZE;
+      let viewsize = gamedat_ids.MAP_VIEWSIZE;
+      let docsize = { w: 0.8 * origdocsize.w, h: 0.8 * origdocsize.h };
+      function evhan_mousedown(ev) {
+          if (!scrollref.current) {
+              return;
+          }
+          /* Clip the drag area to inside the scrollbar box. (Firefox would
+             allow this handler to snipe scrollbar dragging.) */
+          let offx = ev.nativeEvent.offsetX;
+          let offy = ev.nativeEvent.offsetY;
+          if (offx < 0 || offx >= scrollref.current.clientWidth || offy < 0 || offy >= scrollref.current.clientHeight) {
+              return;
+          }
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (scrollref.current && ev.button == 0) {
+              dragstart = { x: ev.clientX, y: ev.clientY };
+              scrollstart = { x: scrollref.current.scrollLeft, y: scrollref.current.scrollTop };
+              scrollref.current.setPointerCapture(ev.pointerId);
+          }
+      }
+      function evhan_mousemove(ev) {
+          if (scrollref.current && dragstart && scrollstart) {
+              ev.preventDefault();
+              scrollref.current.scrollLeft = scrollstart.x - (ev.clientX - dragstart.x);
+              scrollref.current.scrollTop = scrollstart.y - (ev.clientY - dragstart.y);
+          }
+      }
+      /* This callback is used for *both* the map-load event and the useEffect
+         that depends on zstate. This is because the SVG loads slightly later
+         than the first useEffect invocation.
+
+         It's also invoked when the theme changes, because we have to adjust
+         the SVG theme class.
+      */
+      function select_location() {
+          var _a, _b;
+          if (mapref.current) {
+              let herenum = zstate.globals[0]; // LOCATION
+              let hereobj = gamedat_object_ids.get(herenum);
+              let herestr = '';
+              if (hereobj) {
+                  herestr = hereobj.name;
+              }
+              let herecen = null;
+              if (scrollcenter) {
+                  let res = scrollcenter(zstate, herestr);
+                  if (res && res.room) {
+                      herestr = res.room;
+                  }
+                  if (res && res.pos) {
+                      herecen = res.pos;
+                  }
+              }
+              if (!herecen) {
+                  let roomobj = gamedat_roominfo_names.get(herestr);
+                  if (roomobj) {
+                      herecen = roomobj.center;
+                  }
+              }
+              let mapdoc = mapref.current.contentDocument;
+              if (mapdoc && mapdoc.rootElement) {
+                  let cla = (is_dark_theme() ? 'DarkTheme' : 'LightTheme');
+                  mapdoc.rootElement.classList.value = cla;
+                  let curstr = (_a = mapdoc.rootElement.getAttribute('data-curselect')) !== null && _a !== void 0 ? _a : '';
+                  if (herestr != curstr) {
+                      let el = mapdoc.getElementById('r-' + curstr.toLowerCase());
+                      if (el) {
+                          el.classList.remove('Selected');
+                      }
+                      el = mapdoc.getElementById('r-' + herestr.toLowerCase());
+                      if (el) {
+                          el.classList.add('Selected');
+                          if (scrollref.current && herecen) {
+                              scrollref.current.scrollLeft = herecen.x * docsize.w / viewsize.w - 0.5 * scrollref.current.clientWidth;
+                              scrollref.current.scrollTop = herecen.y * docsize.h / viewsize.h - 0.5 * scrollref.current.clientHeight;
+                          }
+                      }
+                      mapdoc.rootElement.setAttribute('data-curselect', herestr);
+                  }
+                  if (mobiles) {
+                      let mobcounts = {};
+                      for (let mobid of mobiles) {
+                          // We rely on the fact that the zstate reports
+                          // objects in order (1-based).
+                          let zobj = zstate.objects[mobid - 1];
+                          if (!zobj)
+                              continue;
+                          let obj = gamedat_object_ids.get(mobid);
+                          if (!obj)
+                              continue;
+                          let el = mapdoc.getElementById('mob-' + obj.name.toLowerCase());
+                          if (!el)
+                              continue;
+                          let mobcen = null;
+                          let mobloc;
+                          if (zobj.parent) {
+                              mobloc = gamedat_object_ids.get(zobj.parent);
+                              if (mobloc) {
+                                  let throomobj = gamedat_roominfo_names.get(mobloc.name);
+                                  if (throomobj) {
+                                      mobcen = throomobj.bottom;
+                                  }
+                              }
+                          }
+                          if (mobcen && mobloc) {
+                              let mobcount = (_b = mobcounts[mobloc.name]) !== null && _b !== void 0 ? _b : 0;
+                              let posx = mobcen.x + 2 * mobcount;
+                              let posy = mobcen.y + 4 * mobcount;
+                              el.classList.remove('Offstage');
+                              el.setAttribute('transform', 'translate(' + posx + ',' + posy + ')');
+                              mobcounts[mobloc.name] = mobcount + 1;
+                          }
+                          else {
+                              el.classList.add('Offstage');
+                          }
+                      }
+                  }
+                  if (extras) {
+                      let extrals = extras(zstate);
+                      for (let obj of extrals) {
+                          let el = mapdoc.getElementById(obj.id);
+                          if (!el)
+                              continue;
+                          if (obj.class !== undefined)
+                              el.classList.value = obj.class;
+                          if (obj.transform !== undefined)
+                              el.setAttribute('transform', obj.transform);
+                      }
+                  }
+              }
+          }
+      }
+      reactExports.useEffect(() => {
+          select_location();
+          window.addEventListener('map-update', select_location);
+          return () => {
+              window.removeEventListener('map-update', select_location);
+          };
+      }, [zstate, rctx.theme]);
+      function evhan_mouseup(ev) {
+          dragstart = null;
+          scrollstart = null;
+          if (scrollref.current) {
+              scrollref.current.releasePointerCapture(ev.pointerId);
+          }
+      }
+      return (jsxRuntimeExports.jsx("div", { className: "ScrollXYContent", ref: scrollref, onPointerDown: evhan_mousedown, onPointerMove: evhan_mousemove, onPointerUp: evhan_mouseup, children: jsxRuntimeExports.jsx("object", { className: "GameMap", ref: mapref, onLoad: select_location, width: docsize.w, height: docsize.h, type: "image/svg+xml", data: filename || "pic/map.svg" }) }));
+  }
+  const useRefDiv$1 = () => reactExports.useRef(null);
+  const useRefObject = () => reactExports.useRef(null);
+
+  // This is basically terrible but I'm don't have the energy to create an Effect
+  let currentFollowKey = 0;
+  function GameMapBox() {
+      const [followKey, setFollowKey] = reactExports.useState(0);
+      const [showTransit, setShowTransit] = reactExports.useState(false);
+      currentFollowKey = followKey;
+      function evhan_transit_change() {
+          setShowTransit(!showTransit);
+          window.dispatchEvent(new CustomEvent('map-update', {}));
+      }
+      function setFollowKeyWrap(val) {
+          currentFollowKey = val;
+          setFollowKey(val);
+          window.dispatchEvent(new CustomEvent('map-update', {}));
+      }
+      return (jsxRuntimeExports.jsxs("div", { className: "MapBox", children: [jsxRuntimeExports.jsxs("div", { className: "MapTabBar", children: [jsxRuntimeExports.jsx(ObjListSorter, { followKey: followKey, setFollowKey: setFollowKeyWrap }), jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx("input", { id: "showtransit", type: "checkbox", name: "showtransit", onChange: evhan_transit_change }), jsxRuntimeExports.jsx("label", { htmlFor: "showtransit", children: "Show Transit Layer" })] })] }), jsxRuntimeExports.jsx(GameMap, { extras: map_adjustments, scrollcenter: scroll_center })] }));
+  }
+  function scroll_center(zstate, locname) {
+      let originobj = zstate.globals[114]; // WINNER
+      if (currentFollowKey > 0) {
+          originobj = robot_ids[currentFollowKey];
+      }
+      let mobroom = originobj;
+      while (true) {
+          let robj = zstate.objects[mobroom - 1];
+          if (!robj || robj.parent == 0 || robj.parent == gamedat_ids.ROOMS)
+              break;
+          mobroom = robj.parent;
+      }
+      if (mobroom && mobroom != originobj) {
+          let roomdat = gamedat_object_ids.get(mobroom);
+          if (roomdat) {
+              return { room: roomdat.name };
+          }
+      }
+      return null;
+  }
+  const room_offsets = [
+      [{ x: 0, y: -2 }, { x: 0, y: -2 }, { x: 0, y: -2 }, { x: 0, y: -2 }, { x: 0, y: -2 }, { x: 0, y: -2 }, { x: 0, y: -2 },], // UD-TUBE special case
+      [{ x: 0, y: 1 },],
+      [{ x: 0, y: 1 }, { x: 0, y: -1 },],
+      [{ x: 0, y: 1 }, { x: 0.866, y: -0.5 }, { x: -0.866, y: -0.5 },],
+      [{ x: 0, y: 1 }, { x: -1, y: 0 }, { x: 1, y: 0 }, { x: 0, y: -1 },],
+      [{ x: 0, y: 1 }, { x: 0.951, y: 0.309 }, { x: 0.587, y: -0.809 }, { x: -0.587, y: -0.809 }, { x: -0.951, y: 0.309 },],
+      [{ x: 0, y: 1 }, { x: 0.866, y: 0.5 }, { x: 0.866, y: -0.5 }, { x: 0, y: -1 }, { x: -0.866, y: -0.5 }, { x: -0.866, y: 0.5 },],
+      [{ x: 0, y: 1 }, { x: 0.866, y: 0.5 }, { x: 0.866, y: -0.5 }, { x: 0, y: -1 }, { x: -0.866, y: -0.5 }, { x: -0.866, y: 0.5 }, { x: 0, y: 0 }],
+  ];
+  function map_adjustments(zstate) {
+      let ls = [];
+      let mobmap = new Map();
+      for (let mobid of robot_ids) {
+          if (!mobid)
+              continue;
+          let mobroom = mobid;
+          while (true) {
+              let robj = zstate.objects[mobroom - 1];
+              if (!robj || robj.parent == 0 || robj.parent == gamedat_ids.ROOMS)
+                  break;
+              mobroom = robj.parent;
+          }
+          if (mobroom && mobroom != mobid) {
+              var rls = mobmap.get(mobroom);
+              if (!rls) {
+                  mobmap.set(mobroom, [mobid]);
+              }
+              else {
+                  rls.push(mobid);
+              }
+          }
+      }
+      for (let roomid of mobmap.keys()) {
+          let rls = mobmap.get(roomid);
+          if (!rls)
+              continue;
+          let roomdat = gamedat_object_ids.get(roomid);
+          if (!roomdat)
+              continue;
+          let throomobj = gamedat_roominfo_names.get(roomdat.name);
+          if (!throomobj)
+              continue;
+          let offx = 0.25 * throomobj.width;
+          let offy = 0.25 * throomobj.height;
+          let offsets = room_offsets[rls.length];
+          if (roomid == 139) // UD-TUBE
+              offsets = room_offsets[0];
+          let index = 0;
+          for (let mobid of rls) {
+              let mobj = gamedat_object_ids.get(mobid);
+              if (!mobj) {
+                  continue;
+              }
+              let mobkey = "mob-" + mobj.name.toLowerCase();
+              let mobcen = null;
+              mobcen = throomobj.center;
+              let offset = offsets[index];
+              let robcen = { x: mobcen.x + offx * offset.x, y: mobcen.y + offy * offset.y };
+              let mtransform = 'translate(' + robcen.x + ',' + robcen.y + ')';
+              ls.push({ id: mobkey, transform: mtransform });
+              index++;
+          }
+      }
+      return ls;
+  }
+
   const tab_list = [
       ['activity', 'Activity'],
       ['objtree', 'World'],
-      //[ 'map', 'Map' ],
+      ['map', 'Map'],
       ['globals', 'State'],
       ['timers', 'Timers'],
       ['grammar', 'Grammar'],
@@ -37273,11 +37540,9 @@ var bundle = (function (exports) {
           case 'activity':
               tabcontent = jsxRuntimeExports.jsx(CallActivity, {});
               break;
-          /*
           case 'map':
-              tabcontent = <GameMap mobiles={ mobiles } />;
+              tabcontent = jsxRuntimeExports.jsx(GameMapBox, {});
               break;
-          */
           case 'globals':
               tabcontent = jsxRuntimeExports.jsx(GlobalState, {});
               break;
