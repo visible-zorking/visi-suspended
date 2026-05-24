@@ -31,6 +31,31 @@ src:GLOBALS-26: This refers to the word `MGCKJK` in [~obj:LOCAL-GLOBALS], above.
 	Why is this synonym necessary? Not clear! Most Infocom games have it (or a variation), but some say “No, this synonym doesn’t need to exist” instead.
 	If you type `EXAMINE MGCKJK`, the parser finds [~obj:local-globals]. But that object is nameless, so you get an empty or garbage reply. Go on, try `AUDA, EXAMINE MGCKJK`.
 
+obj:ME: Notionally you, the corpsicle (I mean Central Mentality), are inside the [column|~obj:HOME]. But nothing can directly interact with you; opening the column ends the game immediately. You can only `QUERY ABOUT ME`. So `ME` exists as a global object.
+
+rtn:CRETIN: This is the action routine for [obj:ME]. The name is a remnant of the original Zork games, in which the printed name of the [ADVENTURER|relative:../zork1/#OBJ:ADVENTURER] was “cretin.”
+
+glob:WINNER: `WINNER` is the actor in the current command.
+	For a `BOTH` command, `WINNER` is briefly [set|~src:MAIN-170] to the [~obj:TWOBOTS] object. It’s reset to [glob:OLD-WINNER] at the end of the turn, though, so you won’t see this in the State tab.
+
+glob:OLD-WINNER: The previous [glob:WINNER] value. This is needed, for example, to reset the `WINNER` after a `BOTH` command. 
+
+glob:WINNER-HERE: The location of the [glob:WINNER]. 
+
+obj:TWOBOTS: During a `BOTH` command, `WINNER` is briefly [set|~src:MAIN-170] to `TWOBOTS`. It’s reset to [glob:OLD-WINNER] at the end of the turn, though, so you won’t see this in the State tab.
+
+glob:ROFF: Indicates the robot you are currently commanding. This is a numeric index, not an object value. See [prop:ROBOT].
+
+glob:HERE: In most Infocom games, `HERE` is the location of the [glob:WINNER]. In *Suspended*, `HERE` is the robot you are currently commanding. (Technically this is based on [glob:ROFF] rather than [glob:WINNER].)
+	Why the difference? Because the interpreter always displays `HERE` in top left of the status line, and in *Suspended*, that is a robot name.
+	
+glob:SCORE: The number of kilodeaths this turn, as calculated in [rtn:I-SCORE].
+	In *Deadline* the interpreter was customized to display the `SCORE` and `HERE` variables as a clock time. No such attempt has been made here; you have to read the manual to learn that the “Score” going up is *bad*.
+	(A later update to the Z-machine allowed the game to print any text it liked in the status line. A [development version|https://github.com/historicalsource/suspended/blob/master/status.zil] of the *Suspended* source took advantage of this, but it was never released.)
+
+
+prop:ROBOT: Each robot has a numeric value from 1 to 6. This is used to look up values in arrays, such as the [prop:OBJDESCS] and [prop:ROOMDESCS] properties.
+	Similarly, the [obj:PEOPLE] have the value 7.
 
 prop:OBJDESCS: This property is a fount of information about how different robots see an object. It’s divided into three groups of six values, plus one more at the end.
 	The first group indicates how an object is initially described in the room. 1 means it’s listed in the general object list. 0 means the robot cannot perceive this object at all.
