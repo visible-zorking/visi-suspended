@@ -32,6 +32,17 @@ export function GameMapBox()
     );
 }
 
+const room_offsets = [
+    [ { x:0, y:-2 }, { x:0, y:-2 }, { x:0, y:-2 }, { x:0, y:-2 }, { x:0, y:-2 }, { x:0, y:-2 }, { x:0, y:-2 }, ], // UD-TUBE special case
+    [ { x:0, y:1 }, ],
+    [ { x:0, y:1 }, { x:0, y:-1 }, ],
+    [ { x:0, y:1 }, { x:0.866, y:-0.5 }, { x:-0.866, y:-0.5 }, ],
+    [ { x:0, y:1 }, { x:-1, y:0 }, { x:1, y:0 }, { x:0, y:-1 }, ],
+    [ { x:0, y:1 }, { x:0.951, y:0.309 }, { x:0.587, y:-0.809 }, { x:-0.587, y:-0.809 }, { x:-0.951, y:0.309 }, ],
+    [ { x:0, y:1 }, { x:0.866, y:0.5 }, { x:0.866, y:-0.5 }, { x:0, y:-1}, { x:-0.866, y:-0.5 }, { x:-0.866, y:0.5 }, ],
+    [ { x:0, y:1 }, { x:0.866, y:0.5 }, { x:0.866, y:-0.5 }, { x:0, y:-1}, { x:-0.866, y:-0.5 }, { x:-0.866, y:0.5 }, { x:0, y:0 } ],
+];
+
 function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
 {
     let ls = [];
@@ -58,32 +69,41 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
             }
         }
     }
-    
-    for (let mobid of robot_ids) {
-        if (!mobid) {
+
+    for (let roomid of mobmap.keys()) {
+        let rls = mobmap.get(roomid);
+        if (!rls)
             continue;
-        }
-        let mobj = gamedat_object_ids.get(mobid);
-        if (!mobj) {
+
+        let roomdat = gamedat_object_ids.get(roomid);
+        if (!roomdat)
             continue;
-        }
-        let mobkey = "mob-" + mobj.name.toLowerCase();
-        let mobcen: OptPosition = null;
-        let mobloc: ObjectData|undefined;
-        let zobj = zstate.objects[mobid-1];
-        if (zobj.parent) {
-            mobloc = gamedat_object_ids.get(zobj.parent);
-            if (mobloc) {
-                let throomobj = gamedat_roominfo_names.get(mobloc.name);
-                if (throomobj) {
-                    mobcen = throomobj.center;
-                }
+        let throomobj = gamedat_roominfo_names.get(roomdat.name);
+        if (!throomobj)
+            continue;
+
+        let offx = 0.25 * throomobj.width;
+        let offy = 0.25 * throomobj.height;
+        let offsets = room_offsets[rls.length];
+        if (roomid == 139) // UD-TUBE
+            offsets = room_offsets[0];
+        
+        let index = 0;
+        for (let mobid of rls) {
+            let mobj = gamedat_object_ids.get(mobid);
+            if (!mobj) {
+                continue;
             }
-        }
-        if (mobcen) {
-            let robcen = { x:mobcen.x, y:mobcen.y+5 };
+            let mobkey = "mob-" + mobj.name.toLowerCase();
+            let mobcen: OptPosition = null;
+            let mobloc: ObjectData|undefined;
+            mobcen = throomobj.center;
+            let offset = offsets[index];
+            let robcen = { x:mobcen.x + offx*offset.x, y:mobcen.y + offy*offset.y };
             let mtransform = 'translate('+robcen.x+','+robcen.y+')';
             ls.push({ id:mobkey, transform:mtransform });
+
+            index++;
         }
     }
 
