@@ -53,6 +53,7 @@
 #mobilelayer g.Offstage { display:none; }
 #mobilelayer #cp-mob-winner.Offstage { display:none; }
 #connlayer .Invisible { display:none; }
+#frontdecorlayer.Invisible { display:none; }
 </style><defs
      id="defs1"><linearGradient
        id="linearGradient207"

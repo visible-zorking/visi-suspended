@@ -11,6 +11,7 @@ import { ObjListSorter } from './cwidgets';
 
 // This is basically terrible but I'm don't have the energy to create an Effect
 let currentFollowKey: number = 0;
+let currentShowTransit: boolean = false;
 
 export function GameMapBox()
 {
@@ -18,8 +19,10 @@ export function GameMapBox()
     const [ showTransit, setShowTransit ] = useState(false);
 
     currentFollowKey = followKey;
+    currentShowTransit = showTransit;
     
     function evhan_transit_change() {
+        currentShowTransit = !showTransit;
         setShowTransit(!showTransit);
         window.dispatchEvent(new CustomEvent('map-update', {}));
     }
@@ -81,6 +84,9 @@ const room_offsets = [
 function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
 {
     let ls = [];
+
+    let cla = currentShowTransit ? 'Visible' : 'Invisible';
+    ls.push({ id:'frontdecorlayer', 'class':cla });
 
     let mobmap = new Map<number, number[]>();
 
