@@ -45,7 +45,13 @@ glob:WINNER-HERE: The location of the [glob:WINNER].
 obj:TWOBOTS: During a `BOTH` command, `WINNER` is briefly [set|~src:MAIN-170] to `TWOBOTS`. It’s reset to [glob:OLD-WINNER] at the end of the turn, though, so you won’t see this in the State tab.
 	*Bug:* The [~RTN:TWOBOTS-FCN] routine never checks that the two named robots are *different*. You can therefore complete any two-bot action with just one robot: `BOTH WALDO AND WALDO, ...`.
 
-glob:ROFF: Indicates the robot you are currently commanding. This is a numeric index, not an object value. See [prop:ROBOT].
+glob:ROFF: Indicates the robot you are currently commanding. This is a numeric index, not an object value. See [glob:NAME-TBL], [prop:ROBOT].
+
+glob:NAME-TBL: The array of robots in [glob:ROFF] order. (With [obj:PEOPLE] as the seventh entry.) This actually lists object values; the names are in [glob:ROBOT-NAMES].
+
+glob:ROBOT-NAMES: The array of robot names, in [glob:ROFF] order. The robots’ object values are in [glob:NAME-TBL].
+
+glob:
 
 glob:HERE: In most Infocom games, `HERE` is the location of the [glob:WINNER]. In *Suspended*, `HERE` is the robot you are currently commanding. (Technically this is based on [glob:ROFF] rather than [glob:WINNER].)
 	Why the difference? Because the interpreter always displays `HERE` in top left of the status line, and in *Suspended*, that is a robot name.
@@ -68,13 +74,46 @@ prop:ROOMDESCS: This property describes how each robot perceives each room. If 0
 
 prop:CLC-TXT: This property contains the responses when Whiz queries the Technical, Advisory, or Historical Peripherals. (The Index Peripheral just indicates which of the other three have responses.)
 
+
+glob:LIT: Whether the current location has light. (They all do.) Set by calling the [rtn:LIT?] routine.
+
+rtn:LIT?: Determine whether a given location has light. This is true if the room or anything in it has [attr:ONBIT], or if [~glob:ALWAYS-LIT] is set.
+	This is a stock bit of Infocom parser code; it is used to set the [glob:LIT] variable. In *Suspended* it always returns true.
+	(It would be simpler if [~glob:ALWAYS-LIT] was set, but *Suspended* doesn’t do this.)
+
 glob:LOAD-MAX: The weight limit that the current robot is allowed to carry. This changes every time a robot executes a command.
 
 glob:LOW-DIRECTION: In most games, properties with this value and above are directions.
 	In *Suspended*, the `VALUE`, `CAPACITY`, and `SIZE` properties are defined first (see [here|~src:SUSPENDED-35]). So those properties have the highest values. `LOW-DIRECTION` is never checked, however, so this doesn’t cause a problem.
+
+attr:ONBIT: Set for permanently-illuminated rooms. *Suspended* has no darkness, so this is all of them.
+
+attr:RLANDBIT: Set for all rooms.
+
+attr:VILLAIN: Set for living beings ([obj:ME] and [obj:PEOPLE]).
+
+attr:VICBIT: Set for living beings and robots.
+
+glob:P-WON: Set if the parser successfully parsed a command. (As opposed to a blank line or an error.)
+	No relation to whether the *player* has won.
+
+glob:C-INTS: Indicates how much of the timer table ([*glob:C-TABLE]) is used. This counts down from `C-TABLELEN`, which is 180.
+
+glob:C-DEMONS: Indicates how much of the timer table is used for daemons.
+	The difference between daemons and timers is that timers run every turn; daemons run every *input*, even if no turn passes. But *Suspended* does not use daemons.
+
+glob:C-TABLE: The timer table. See the Timers tab for a current listing.
+
+TIMERS-LEGEND: A list of the timers running (or paused) in the timer table ([~glob:C-TABLE]). Positive numbers count down (while enabled) and call the named function after that many turns. Negative numbers are called every turn while the timer is enabled.
+	This list only grows as you play; timers can be added, started, and stopped, but not removed.
+
+rtn:GO: Set up the world at the start of the game. Start the timers. Print the banner. Set all those useful globals like [~glob:HERE] and [~glob:WINNER]. Do the inital `ARL` command.
+
 
 ### SUPPLIES-NORTH
 ### HELL
 ### TWOBOTS and bug
 ### ADJ-CHECK has starcross words
 ### PEOPLE.CLC-TXT
+### V-LOOK-SAFELY (starcross)
+
