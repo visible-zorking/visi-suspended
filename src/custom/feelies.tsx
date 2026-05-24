@@ -131,6 +131,12 @@ export function FeeliesPage()
                     {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'map') }>Map</a>{' '}
                     tab.
                 </p>
+                <p>
+                    For a high-res version of this map, visit the Internet
+                    Archive:{' '}
+                    <ExtWebLink url={ 'https://archive.org/details/Suspended-Infocom-Apple/map-p1.jpg' } text={ 'original scan' } />,{' '}
+                    <ExtWebLink url={ 'https://archive.org/details/Suspended_Map_Recreation' } text={ 'my recreation' } />.
+                </p>
                 <h2>The manual</h2>
                 <p>
                     Note: These images are scanned from the the honest-to-Frob
