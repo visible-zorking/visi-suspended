@@ -9,19 +9,30 @@ import { ZStatePlus } from '../visi/zstate';
 import { GameMap, OptPosition, ScrollCenterInfo, ExtraToggle } from '../visi/map';
 import { ObjListSorter } from './cwidgets';
 
+// This is basically terrible but I'm don't have the energy to create an Effect
+let currentFollowKey: number = 0;
+
 export function GameMapBox()
 {
     const [ followKey, setFollowKey ] = useState(0);
     const [ showTransit, setShowTransit ] = useState(false);
 
+    currentFollowKey = followKey;
+    
     function evhan_transit_change() {
         setShowTransit(!showTransit);
+        window.dispatchEvent(new CustomEvent('map-update', {}));
+    }
+    function setFollowKeyWrap(val: number) {
+        currentFollowKey = val;
+        setFollowKey(val);
+        window.dispatchEvent(new CustomEvent('map-update', {}));
     }
 
     return (
         <div className="MapBox">
             <div className="MapTabBar">
-                <ObjListSorter followKey={ followKey } setFollowKey={ setFollowKey } />
+                <ObjListSorter followKey={ followKey } setFollowKey={ setFollowKeyWrap } />
                 <div>
                     <input id="showtransit" type="checkbox" name="showtransit" onChange={ evhan_transit_change } />
                     <label htmlFor="showtransit">Show Transit Layer</label>
@@ -35,7 +46,10 @@ export function GameMapBox()
 function scroll_center(zstate:ZStatePlus, locname:string): ScrollCenterInfo
 {
     let originobj: number = zstate.globals[114];  // WINNER
-;
+    if (currentFollowKey > 0) {
+        originobj = robot_ids[currentFollowKey];
+    }
+    
     let mobroom = originobj;
     while (true) {
         let robj = zstate.objects[mobroom-1];
