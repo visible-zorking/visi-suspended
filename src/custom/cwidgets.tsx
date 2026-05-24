@@ -7,7 +7,7 @@ import { ReactCtx, StackCallCtx } from '../visi/context';
 import { ArgShowObject, ArgShowProperty } from '../visi/actshowers';
 import { VarShowString, VarShowObject, VarShowProperty } from '../visi/globshow';
 import { gamedat_ids, gamedat_distances, gamedat_object_treesort, gamedat_objproptable_addrs } from '../visi/gamedat';
-import { robot_names } from './info';
+import { robot_names, robot_ids } from './info';
 
 export function contains_label(obj: ObjectData) : string
 {
@@ -23,9 +23,9 @@ export function contains_label(obj: ObjectData) : string
 export function sorter_for_key(key: number, zstate: ZStatePlus) : (roots:ZObject[], map:Map<number, ZObject>) => void
 {
     let originobj: number = zstate.globals[114];  // WINNER
-    const followObjs = [ 0, gamedat_ids.IRIS, gamedat_ids.WALDO, gamedat_ids.SENSA, gamedat_ids.AUDA, gamedat_ids.POET, gamedat_ids.WHIZ, gamedat_ids.PEOPLE ];
+;
     if (key) {
-        originobj = followObjs[key];
+        originobj = robot_ids[key];
     }
 
     return function(roots: ZObject[], map: Map<number, ZObject>) {
