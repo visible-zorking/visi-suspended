@@ -151,13 +151,23 @@ rtn:I-SCORE: This timer works out how many surface humans die every turn. It set
 
 rtn:DO-RTD: Add transit deaths to [glob:SCORE]. This is part of the [rtn:I-SCORE] timer. It’s also invoked if you flip the switches in [Transit Control|~obj:RTD]; this ensures that the transit death rate drops (or rises!) immediately.
 
+rtn:I-FOLLOW: This timer handles ongoing `FOLLOW` commands.
+
 rtn:I-IRIS-HINTS: Iris periodically reminds you that she needs her visuals fixed.
 
 rtn:I-AUDA-HINTS: Auda reacts the first time the [obj:PEOPLE] enter her location.
 
+rtn:I-TREMOR1: The first tremor causes the acid leak.
+
+rtn:I-TREMOR2: The second tremor perturbs the Hydroponics settings.
+	Transit deaths begin at the same time, but that's not handled by this routine.
+
 rtn:I-ROBOTKILLER: This timer handles progressive acid damage by incrementing the [glob:DEADBOTS] counters.
 
+### I-FOOD, I-DECAY, I-WEATHER
+
 rtn:I-WIRE-MESSAGE: This timer nudges you about the reset codes once you’ve successfully repaired both cable conduits.
+
 
 
 src:SUSPENDED-1: The game is titled *Suspension*, not *Suspended*, in most of the source code.
