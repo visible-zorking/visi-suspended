@@ -7,6 +7,7 @@ import { ObjectData } from '../visi/gametypes';
 import { ZStatePlus } from '../visi/zstate';
 
 import { GameMap, OptPosition, ScrollCenterInfo, ExtraToggle } from '../visi/map';
+import { Commentary } from '../visi/widgets';
 import { ObjListSorter } from './cwidgets';
 
 // This is basically terrible but I'm don't have the energy to create an Effect
@@ -35,6 +36,7 @@ export function GameMapBox()
     return (
         <div className="MapBox">
             <div className="MapTabBar">
+                <Commentary topic="MAP-LEGEND" />
                 <ObjListSorter followKey={ followKey } setFollowKey={ setFollowKeyWrap } />
                 <div>
                     <input id="showtransit" type="checkbox" name="showtransit" onChange={ evhan_transit_change } />
