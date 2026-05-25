@@ -90,6 +90,7 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
     let cla = currentShowTransit ? 'Visible' : 'Invisible';
     ls.push({ id:'frontdecorlayer', 'class':cla });
 
+    let originobj: number = zstate.globals[114];  // WINNER
     let mobmap = new Map<number, number[]>();
 
     for (let mobid of robot_ids) {
@@ -144,7 +145,8 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
             let offset = offsets[index];
             let robcen = { x:mobcen.x + offx*offset.x, y:mobcen.y + offy*offset.y };
             let mtransform = 'translate('+robcen.x+','+robcen.y+')';
-            ls.push({ id:mobkey, transform:mtransform });
+            let cla = (mobid == originobj) ? '' : 'Noncurrent';
+            ls.push({ id:mobkey, transform:mtransform, class:cla });
 
             index++;
         }
