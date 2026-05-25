@@ -184,6 +184,13 @@ src:ROBOTS-878: The [obj:PEOPLE] object has two [prop:CLC-TXT] definitions. This
 
 obj:SUPPLIES-NORTH: The [prop:ROOMDESCS] entry in this definition is a stub. The room description is dynamic (because the [~obj:MACHINE] might be open or closed), and [prop:ROOMDESCS] doesn't support that. Instead the description is printed by [~rtn:SUPPLIES-N-FCN], pieced together from [~glob:LDSUPPLIES], [~glob:WIRE-FIRST], and [~glob:WIRE-SECOND].
 
+### make these relative links to Starcross.
 
-### ADJ-CHECK has starcross words
-### V-LOOK-SAFELY (starcross)
+rtn:ADJ-CHECK: This adjective list is copied over from *Starcross!* 
+
+rtn:V-LOOK-SAFELY: This is the `LOOK AT __ THROUGH __` command, which is copied straight over from *Starcross*. *Suspended* has no transparent objects, so the action is useless.
+	(The “X isn’t transparent” message is misleading, really. Only Iris would notice! And Waldo’s sonar can penetrate some surfaces, and so on.)
+	The action is called `LOOK-SAFELY` because *Starcross* has a laser that can blind you.
+
+
+
