@@ -144,6 +144,8 @@ rtn:I-CHASEAUDA: Handles the [obj:PEOPLE] chasing a robot who has grabbed the [~
 
 rtn:I-PEOPLE2: Send the [obj:PEOPLE] off to the [~obj:INNER-CORE].
 
+### more people timers
+
 
 rtn:I-SCORE: This timer works out how many surface humans die every turn. It sets [glob:SCORE] and increases [glob:TOTAL-SCORE] by that value.
 	This includes a call to [rtn:DO-RTD], which handles the transit part of the death count.
@@ -175,9 +177,13 @@ src:SUSPENDED-1: The game is titled *Suspension*, not *Suspended*, in most of th
 
 obj:HELL: This exists only so that you can tell a robot `GO TO HELL`.
 
-### SUPPLIES-NORTH
-### TWOBOTS and bug
+src:GOAL-168: There is no `SKY4`. The compiler silently stores a zero in that entry.
+
+src:ROBOTS-878: The [obj:PEOPLE] object has two [prop:CLC-TXT] definitions. This is technically illegal but the compiler apparently didn't report an error.
+	Because of the way Z-machine properties work, only the second entry has any effect. The strings in the first entry appear in the game file, but can never be printed. I have greyed them out to indicate this.
+
+obj:SUPPLIES-NORTH: The [prop:ROOMDESCS] entry in this definition is a stub. The room description is dynamic (because the [~obj:MACHINE] might be open or closed), and [prop:ROOMDESCS] doesn't support that. Instead the description is printed by [~rtn:SUPPLIES-N-FCN], pieced together from [~glob:LDSUPPLIES], [~glob:WIRE-FIRST], and [~glob:WIRE-SECOND].
+
+
 ### ADJ-CHECK has starcross words
-### PEOPLE.CLC-TXT
 ### V-LOOK-SAFELY (starcross)
-### SKY4
