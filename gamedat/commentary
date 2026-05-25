@@ -184,6 +184,8 @@ src:ROBOTS-878: The [obj:PEOPLE] object has two [prop:CLC-TXT] definitions. This
 
 obj:SUPPLIES-NORTH: The [prop:ROOMDESCS] entry in this definition is a stub. The room description is dynamic (because the [~obj:MACHINE] might be open or closed), and [prop:ROOMDESCS] doesn't support that. Instead the description is printed by [~rtn:SUPPLIES-N-FCN], pieced together from [~glob:LDSUPPLIES], [~glob:WIRE-FIRST], and [~glob:WIRE-SECOND].
 
+src:OBJECTS-1205: “Emmak”? I feel like I missed a joke.
+
 ### make these relative links to Starcross.
 
 rtn:ADJ-CHECK: This adjective list is copied over from *Starcross!* 
