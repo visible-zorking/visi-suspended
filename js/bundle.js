@@ -37171,7 +37171,7 @@ var bundle = (function (exports) {
   function AboutPage() {
       let rctx = reactExports.useContext(ReactCtx);
       let zstate = rctx.zstate;
-      let lastupdate = 'May 24, 2026';
+      let lastupdate = 'May 25, 2026';
       let curroom = '???';
       let winnername = '???';
       let map = new Map();
