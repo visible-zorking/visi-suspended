@@ -130,6 +130,20 @@ rtn:JIGS-UP: Handles the abrupt death of a robot. Sets the [attr:CUTBIT] flag an
 obj:PEOPLE: The group of humans who enter the Complex. They hang around “off-stage” in [obj:UD-TUBE] until it’s time for them to arrive.
 	If you `COUNT HUMANS`, you can discover that there are two of them. Otherwise, the game never says, which is remarkably distancing.
 
+glob:PR-NUMBER: The state variable that determines what the [obj:PEOPLE] are doing.
+
+glob:SLEEPERS: The counter for the [obj:PEOPLE]’s nap. See [rtn:I-STEAL].
+
+rtn:I-PEOPLE1: This timer triggers the initial arrival of the [obj:PEOPLE]. They will go to the [~obj:SLEEP-CHAMBER] first (see [rtn:I-STEAL]).
+
+rtn:I-STEAL: This timer increments the [glob:SLEEPERS] counter as the [obj:PEOPLE] take a nap in the [~obj:SLEEP-CHAMBER].
+	If a robot grabs the [~obj:TOOLBAG], they wake up and chase it ([rtn:I-CHASEAUDA]). Otherwise, after 20 turns, they awaken and head to the [~obj:INNER-CORE] ([rtn:I-PEOPLE2]).
+
+rtn:I-CHASEAUDA: Handles the [obj:PEOPLE] chasing a robot who has grabbed the [~obj:TOOLBAG]. The function name is misleading; it can be any robot ([~glob:RTHIEF]).
+	If you lead the humans to observe the acid leak, they'll fix it and then head to the [~obj:REC-AREA]. Otherwise, they'll eventually catch up with you, get the toolbag back, and return to their original plan ([rtn:I-PEOPLE2]).
+
+rtn:I-PEOPLE2: Send the [obj:PEOPLE] off to the [~obj:INNER-CORE].
+
 
 rtn:I-SCORE: This timer works out how many surface humans die every turn. It sets [glob:SCORE] and increases [glob:TOTAL-SCORE] by that value.
 	This includes a call to [rtn:DO-RTD], which handles the transit part of the death count.
@@ -137,7 +151,13 @@ rtn:I-SCORE: This timer works out how many surface humans die every turn. It set
 
 rtn:DO-RTD: Add transit deaths to [glob:SCORE]. This is part of the [rtn:I-SCORE] timer. It’s also invoked if you flip the switches in [Transit Control|~obj:RTD]; this ensures that the transit death rate drops (or rises!) immediately.
 
-### more timers
+rtn:I-IRIS-HINTS: Iris periodically reminds you that she needs her visuals fixed.
+
+rtn:I-AUDA-HINTS: Auda reacts the first time the [obj:PEOPLE] enter her location.
+
+rtn:I-ROBOTKILLER: This timer handles progressive acid damage by incrementing the [glob:DEADBOTS] counters.
+
+rtn:I-WIRE-MESSAGE: This timer nudges you about the reset codes once you’ve successfully repaired both cable conduits.
 
 
 src:SUSPENDED-1: The game is titled *Suspension*, not *Suspended*, in most of the source code.
