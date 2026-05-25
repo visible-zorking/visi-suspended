@@ -70,6 +70,8 @@ glob:SCORE: The number of kilodeaths this turn, as calculated in [rtn:I-SCORE].
 	In *Deadline* the interpreter was customized to display the `SCORE` and `HERE` variables as a clock time. No such attempt has been made here; you have to read the manual to learn that the “Score” going up is *bad*.
 	(A later update to the Z-machine allowed the game to print any text it liked in the status line. A [development version|https://github.com/historicalsource/suspended/blob/master/status.zil] of the *Suspended* source took advantage of this, but it was never released.)
 
+glob:TOTAL-SCORE: The accumulated value of [glob:SCORE] each turn. Which is to say, the total surface death count, in thousands.
+
 
 prop:ROBOT: Each robot has a numeric value from 1 to 6. This is used to look up values in arrays, such as the [prop:OBJDESCS] and [prop:ROOMDESCS] properties.
 	Similarly, the [obj:PEOPLE] have the value 7.
@@ -124,7 +126,18 @@ rtn:GO: Set up the world at the start of the game. Start the timers. Print the b
 rtn:JIGS-UP: Handles the abrupt death of a robot. Sets the [attr:CUTBIT] flag and marks the robot as terminal in [glob:DEADBOTS].
 	(Acid damage is handled in the individual robot action routines.)
 
-### timers
+
+obj:PEOPLE: The group of humans who enter the Complex. They hang around “off-stage” in [obj:UD-TUBE] until it’s time for them to arrive.
+	If you `COUNT HUMANS`, you can discover that there are two of them. Otherwise, the game never says, which is remarkably distancing.
+
+
+rtn:I-SCORE: This timer works out how many surface humans die every turn. It sets [glob:SCORE] and increases [glob:TOTAL-SCORE] by that value.
+	This includes a call to [rtn:DO-RTD], which handles the transit part of the death count.
+	If you manage to kill 30 million people, the game gives up on you. (See [~rtn:ALL-DEAD].)
+
+rtn:DO-RTD: Add transit deaths to [glob:SCORE]. This is part of the [rtn:I-SCORE] timer. It’s also invoked if you flip the switches in [Transit Control|~obj:RTD]; this ensures that the transit death rate drops (or rises!) immediately.
+
+### more timers
 
 
 src:SUSPENDED-1: The game is titled *Suspension*, not *Suspended*, in most of the source code.
