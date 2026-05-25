@@ -27,6 +27,12 @@ OBJTREE-LEGEND: In this list, `Rooms` are rooms and `Items` are regular items. (
 obj:LOCAL-GLOBALS: This is a container for scenery objects like [~obj:MONITOR], which is visible from many locations in the game.
 
 
+MAP-LEGEND: *Suspended* uses the same NPC transit logic as *Deadline*. Turn on “Show Transit Layer” to display the movement paths (blue) and sightlines (pink).
+	Note that [obj:UD-TUBE] is a hidden room where the [obj:PEOPLE] start. Robots cannot go there.
+	
+obj:UD-TUBE: A hidden room where the [obj:PEOPLE] start. It’s west of the [~obj:STERILE-AREA], but robots cannot go there.
+
+
 src:GLOBALS-26: This refers to the word `MGCKJK` in [~obj:LOCAL-GLOBALS], above.
 	Why is this synonym necessary? Not clear! Most Infocom games have it (or a variation), but some say “No, this synonym doesn’t need to exist” instead.
 	If you type `EXAMINE MGCKJK`, the parser finds [~obj:local-globals]. But that object is nameless, so you get an empty or garbage reply. Go on, try `AUDA, EXAMINE MGCKJK`.
@@ -122,7 +128,7 @@ rtn:JIGS-UP: Handles the abrupt death of a robot. Sets the [attr:CUTBIT] flag an
 
 
 src:SUSPENDED-1: The game is titled *Suspension*, not *Suspended*, in most of the source code.
-	I got some cheap amusement out of telling my school friends, “I got *Suspended*!” (Which everybody heard as a serious school penalty rather than a game title.)
+	I got some cheap amusement out of telling my school friends, “I got *Suspended!*” (Which everybody heard as a serious school penalty rather than a game title.)
 
 obj:HELL: This exists only so that you can tell a robot `GO TO HELL`.
 
@@ -131,4 +137,4 @@ obj:HELL: This exists only so that you can tell a robot `GO TO HELL`.
 ### ADJ-CHECK has starcross words
 ### PEOPLE.CLC-TXT
 ### V-LOOK-SAFELY (starcross)
-
+### SKY4
