@@ -52,7 +52,7 @@
 #roomlayer rect.Selected { fill:#FFD080; }
 #mobilelayer g.Offstage { display:none; }
 #mobilelayer #cp-mob-winner.Offstage { display:none; }
-#mobilelayer .FocusRing { display:none; }
+#mobilelayer g.Noncurrent .FocusRing { display:none; }
 #connlayer .Invisible { display:none; }
 #frontdecorlayer.Invisible { display:none; }
 </style><defs
