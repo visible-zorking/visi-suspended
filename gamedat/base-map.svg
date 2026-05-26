@@ -24,16 +24,16 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     showgrid="false"
+     showgrid="true"
      inkscape:zoom="1.4142136"
-     inkscape:cx="111.36932"
-     inkscape:cy="358.14959"
+     inkscape:cx="409.76837"
+     inkscape:cy="133.99673"
      inkscape:window-width="1864"
      inkscape:window-height="1239"
      inkscape:window-x="568"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="mob-waldo"><inkscape:grid
+     inkscape:current-layer="mobilelayer"><inkscape:grid
        id="grid1"
        units="px"
        originx="0"
@@ -46,7 +46,7 @@
        opacity="0.14902"
        empspacing="5"
        enabled="true"
-       visible="false" /></sodipodi:namedview><style
+       visible="true" /></sodipodi:namedview><style
      id="style1">svg.DarkTheme { filter: invert(90%) hue-rotate(180deg); }
 #roomlayer rect { fill:#F8F0E8; stroke:#000; stroke-width:0.7; }
 #roomlayer rect.Selected { fill:#FFD080; }
@@ -1288,8 +1288,8 @@
        id="r-ud-tube"
        width="21.166674"
        height="21.166666"
-       x="58.208328"
-       y="31.74999"
+       x="79.374992"
+       y="10.583334"
        ry="2.6458292"
        style="display:inline;fill:#c7c7c7;fill-opacity:0.503731;stroke:#000000;stroke-width:0.7" /><rect
        id="r-hell"
@@ -2374,18 +2374,18 @@
          id="tspan22">and Skywalk</tspan></text><text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;line-height:1.3;font-family:Lato;-inkscape-font-specification:'Lato Bold';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:center;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:normal;display:inline;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;marker-end:url(#marker46);paint-order:stroke fill markers"
-       x="68.791672"
-       y="41.01041"
+       x="89.958336"
+       y="19.843754"
        id="text23"><tspan
          sodipodi:role="line"
          style="stroke-width:1"
-         x="68.791672"
-         y="41.01041"
+         x="89.958336"
+         y="19.843754"
          id="tspan23">UD</tspan><tspan
          sodipodi:role="line"
          style="stroke-width:1"
-         x="68.791672"
-         y="46.513741"
+         x="89.958336"
+         y="25.347082"
          id="tspan24">Tube</tspan></text><g
        id="mob-iris-3"
        transform="translate(37.262096,156.74664)"><ellipse
