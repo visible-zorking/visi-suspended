@@ -180,8 +180,9 @@ rtn:I-ROBOTKILLER: This timer handles progressive acid damage by incrementing th
 rtn:I-WIRE-MESSAGE: This timer nudges you about the reset codes once you’ve successfully repaired both cable conduits.
 
 rtn:I-IMP: `IMPOSSIBLE` mode is of course a joke. The star goes nova in two turns and there’s nothing you can do about it.
-
-
+	I don’t know if the wonderful game *Outer Wilds* (2019) was inspired by this. I hope so.
+	I know that *I* was inspired to add an `IMPOSSIBLE` mode to my game *The Dreamhold* (2004). Although – *spoiler* – in my game, it’s not truly impossible!
+	
 src:SUSPENDED-1: The game is titled *Suspension*, not *Suspended*, in most of the source code.
 	I got some cheap amusement out of telling my school friends, “I got *Suspended!*” (Which everybody heard as a serious school penalty rather than a game title.)
 
