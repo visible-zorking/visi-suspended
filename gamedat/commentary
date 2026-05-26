@@ -197,6 +197,8 @@ obj:SUPPLIES-NORTH: The [prop:ROOMDESCS] entry in this definition is a stub. The
 
 src:OBJECTS-1205: “Emmak”? I feel like I missed a joke.
 
+obj:DEADBOT: Calling the dead super-bot “Fred” is a minor in-joke. Infocom’s office mainframe was named Fred.
+
 ### make these relative links to Starcross.
 
 rtn:ADJ-CHECK: This adjective list is copied over from *Starcross!* 
