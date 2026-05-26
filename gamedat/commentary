@@ -95,6 +95,8 @@ rtn:LIT?: Determine whether a given location has light. This is true if the room
 
 glob:LOAD-MAX: The weight limit that the current robot is allowed to carry. This changes every time a robot executes a command.
 
+glob:NUM-EXT: The number of arms on the current robot, and thus the maximum number of items it can carry. This changes every time a robot executes a command.
+
 glob:LOW-DIRECTION: In most games, properties with this value and above are directions.
 	In *Suspended*, the `VALUE`, `CAPACITY`, and `SIZE` properties are defined first (see [here|~src:SUSPENDED-35]). So those properties have the highest values. `LOW-DIRECTION` is never checked, however, so this doesn’t cause a problem.
 
@@ -125,6 +127,13 @@ rtn:GO: Set up the world at the start of the game. Start the timers. Print the b
 
 rtn:JIGS-UP: Handles the abrupt death of a robot. Sets the [attr:CUTBIT] flag and marks the robot as terminal in [glob:DEADBOTS].
 	(Acid damage is handled in the individual robot action routines.)
+
+rtn:ZPROB: This function is never called.
+
+src:MACROS-73: Most Infocom games use a certain amount of randomness to vary the play experience between run-throughs. *Suspended*, in contrast, uses almost no randomness at all. Timers all run on deterministic schedules. If you follow the same script on two different runs, you'll get the same results.
+	The only randomization (aside from quips like [~glob:R-YUKs]) is the reset code selection in [~rtn:GENERATE-CODES]. (Although see [glob:FUMBLE-NUMBER].)
+	
+glob:FUMBLE-NUMBER: This game inherits the Zork mechanic where carrying too many objects gives a random chance of fumbling. However, this only applies when carrying more than `FUMBLE-NUMBER` objects, which is seven. And no robot has eight arms! So this never happens.
 
 
 obj:PEOPLE: The group of humans who enter the Complex. They hang around “off-stage” in [obj:UD-TUBE] until it’s time for them to arrive.
