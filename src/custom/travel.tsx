@@ -28,12 +28,12 @@ export function TravelPage()
             <p>
                 <em>Suspended</em> borrows the NPC movement system that
                 was invented for <em>Deadline</em>. However, it is rather
-                simpler in this game, because the robots don&#x2019;t have
+                simpler here, because the robots don&#x2019;t have
                 their own movement schedule. They only obey orders.
             </p>
             <p>
                 (The humans <em>do</em> have their own movement schedule,
-                but it&#x2019;s not managed by a table like in
+                but it&#x2019;s not managed by a table like in{' '}
                 <em>Deadline</em>. It&#x2019;s a nest of interlocking timers.)
             </p>
             <p>
@@ -56,7 +56,9 @@ export function TravelPage()
                 &#x201C;Final&#x201D; is where they are heading;
                 &#x201C;station&#x201D; is that room&#x2019;s{' '}
                 <code>STATION</code>;
-                &#x201C;inter&#x201D; is ###.
+                &#x201C;inter&#x201D; is an index into{' '}
+                <a href="#" className="Src_Id" onClick={ (ev) => evhan_click_id(ev, 'GLOB:TRANSFER-TABLE') }><code>TRANSFER-TABLE</code></a>{' '}
+                indicating the transfer point to the next line.
                 The &#x201C;run&#x201D; column is whether the
                 character&#x2019;s movement is enabled. (Always,
                 in this game.)
@@ -131,7 +133,7 @@ function GoalTableRow({ char, row, follow }: { char:number, row:number[], follow
             </td>
             <td>
                 {
-                    row[2] ?
+                    obj0 ?
                         <span>{ row[2] }</span>
                     : '\u2014'
                 }
