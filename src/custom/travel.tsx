@@ -61,6 +61,13 @@ export function TravelPage()
                 character&#x2019;s movement is enabled. (Always,
                 in this game.)
             </p>
+            <p>
+                The &#x201C;follow&#x201D; column is a separate table
+                (<a href="#" className="Src_Id" onClick={ (ev) => evhan_click_id(ev, 'GLOB:FOLLOW-TBL') }><code>FOLLOW-TBL</code></a>)
+                that shows when one robot is told to
+                {' '}<code>FOLLOW</code> another.
+                (I've combined the tables here for simplicity.)
+            </p>
             <GoalTable />
         </div>
     );
@@ -76,7 +83,7 @@ function GoalTable()
     let rowls = [];
     for (let char=1; char<=7; char++) {
         rowls.push(
-            <GoalTableRow key={ char } char={ char } row={ specifics.goaltables[char] } />
+            <GoalTableRow key={ char } char={ char } row={ specifics.goaltables[char] } follow={ specifics.followtbl[char-1] } />
         );
     }
     
@@ -89,6 +96,7 @@ function GoalTable()
                     <th>station</th>
                     <th>inter</th>
                     <th>run</th>
+                    <th>follow</th>
                 </tr>
                 { rowls }
             </tbody>
@@ -96,13 +104,13 @@ function GoalTable()
     );
 }
 
-function GoalTableRow({ char,  row }: { char:number, row:number[] })
+function GoalTableRow({ char, row, follow }: { char:number, row:number[], follow:number })
 {
     let rctx = useContext(ReactCtx);
 
     let obj0 = gamedat_object_ids.get(row[0]);
     let obj1 = gamedat_object_ids.get(row[1]);
-    let obj2 = gamedat_object_ids.get(row[2]);
+    let objf = gamedat_object_ids.get(follow);
     
     return (
         <tr>
@@ -132,6 +140,13 @@ function GoalTableRow({ char,  row }: { char:number, row:number[] })
                 { (row[4] ?
                    <span className="TimerActive">&#x2611;</span> :
                    <span className="TimerInactive">&#x2610;</span>) }
+            </td>
+            <td>
+                {
+                    objf ?
+                    <a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'OBJ:'+objf.name) }>{ objf.name }</a>
+                    : '\u2014'
+                }
             </td>
         </tr>
     )
