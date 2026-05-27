@@ -1,4 +1,25 @@
 
+.GoalTable {
+    border: 1px solid #CCC;
+    padding: 4px;
+}
+
+.GoalTable th {
+    font-weight: normal;
+    font-size: 85%;
+}
+
+.GoalTable td {
+    font-family: "Courier Prime";
+    font-size: 85%;
+    padding: 0px 4px;
+}
+
+.GoalTable tr.RowLabel td {
+    padding-top: 12px;
+    padding-bottom: 4px;
+}
+
 .MapBox {
     display: flex;
     flex-direction: column;

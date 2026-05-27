@@ -26,10 +26,43 @@ export function TravelPage()
     return (
         <div className="ScrollContent">
             <p>
-		ABOUT...
+                <em>Suspended</em> borrows the NPC movement system that
+                was invented for <em>Deadline</em>. However, it is rather
+                simpler in this game, because the robots don&#x2019;t have
+                their own movement schedule. They only obey orders.
+            </p>
+            <p>
+                (The humans <em>do</em> have their own movement schedule,
+                but it&#x2019;s not managed by a table like in
+                <em>Deadline</em>. It&#x2019;s a nest of interlocking timers.)
+            </p>
+            <p>
+                To manage character movement, the game defines six
+                &#x201C;<a href="#" className="Src_Id" onClick={ (ev) => evhan_click_id(ev, 'GLOB:A-LINE') }>transit lines</a>&#x201D;
+                that run through the map.
+                Every room is either a &#x201C;station&#x201D;
+                on one of these lines, or adjacent to a station room.
+                Thus, to reach a goal, an NPC just needs to
+                (1) move to the local station if needed;
+                (2) move one step along the current line to the next
+                interchange;
+                (3) if on the goal line, move one step towards the
+                goal station;
+                (4) move to the final room (if that&#x2019;s not the station).
+            </p>
+            <p>
+                <a href="#" className="Src_Id" onClick={ (ev) => evhan_click_id(ev, 'GLOB:GOAL-TABLES') }><code>GOAL-TABLES</code></a>{' '}
+                shows each robot&#x2019;s current movement goal.
+                &#x201C;Final&#x201D; is where they are heading;
+                &#x201C;station&#x201D; is that room&#x2019;s{' '}
+                <code>STATION</code>;
+                &#x201C;inter&#x201D; is ###.
+                The &#x201C;run&#x201D; column is whether the
+                character&#x2019;s movement is enabled. (Always,
+                in this game.)
             </p>
             <GoalTable />
-	</div>
+        </div>
     );
 }
 
@@ -55,7 +88,6 @@ function GoalTable()
                     <th>final</th>
                     <th>station</th>
                     <th>inter</th>
-                    <th>dir</th>
                     <th>run</th>
                 </tr>
                 { rowls }
@@ -92,12 +124,9 @@ function GoalTableRow({ char,  row }: { char:number, row:number[] })
             <td>
                 {
                     row[2] ?
-			<span>{ row[2] }</span>
+                        <span>{ row[2] }</span>
                     : '\u2014'
                 }
-            </td>
-            <td>
-                &#x2014;
             </td>
             <td>
                 { (row[4] ?
