@@ -143,6 +143,12 @@ prop:CORRIDOR: This property defines one or more “corridors” (sight-lines) t
 
 rtn:LOOK-CORRIDOR: Some robots (not Whiz or Waldo!) can see each other at a distance, according to the [prop:CORRIDOR] property.
 
+prop:LINE: The transit line which a given room is on or adjacent too. See [~prop:STATION].
+
+prop:STATION: The transit-line room which is, or is adjacent to, a given room. See [~prop:LINE].
+
+glob:A-LINE: These tables define the six “transit lines” which let robots travel around the map. Every room is either on or adjacent to a transit line.
+
 
 obj:PEOPLE: The group of humans who enter the Complex. They hang around “off-stage” in [obj:UD-TUBE] until it’s time for them to arrive.
 	If you `COUNT HUMANS`, you can discover that there are two of them. Otherwise, the game never says.
