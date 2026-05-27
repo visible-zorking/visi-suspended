@@ -34871,6 +34871,20 @@ var bundle = (function (exports) {
       document.body.className = cla;
   }
 
+  function get_specifics(engine, state) {
+      // GOAL-TABLES
+      let goaltables = [];
+      for (let char = 0; char < 8; char++) {
+          let goaltable = [];
+          for (let ix = 0; ix < 16; ix += 2) {
+              goaltable.push(engine.getUnsignedWord(9672 + 16 * char + ix));
+          }
+          goaltables.push(goaltable);
+      }
+      return {
+          goaltables: goaltables,
+      };
+  }
   function show_commentary_hook(topic, engine) {
       return null;
   }
@@ -37820,6 +37834,7 @@ var bundle = (function (exports) {
       }
       let appctx = {
           launchtoken: launchtoken,
+          reportspecs: get_specifics,
       };
       set_app_context(engine, initprefs, appctx);
       const appel = document.getElementById('appbody');
