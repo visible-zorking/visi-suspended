@@ -4,6 +4,7 @@ import { gamedat_routine_names, gamedat_global_names, gamedat_string_map } from 
 
 export type SpecificSuspended = {
     goaltables: number[][],
+    followtbl: number[],
 };
 
 export function get_specifics(engine: GnustoEngine, state: ZState): SpecificSuspended
@@ -18,8 +19,15 @@ export function get_specifics(engine: GnustoEngine, state: ZState): SpecificSusp
         goaltables.push(goaltable);
     }
     
+    // FOLLOW-TBL
+    let followtbl = [];
+    for (let char=0; char<6; char++) {
+        followtbl.push(engine.getUnsignedWord(9646 + 2*char));
+    }
+    
     return {
         goaltables: goaltables,
+        followtbl: followtbl,
     };
 }
 
