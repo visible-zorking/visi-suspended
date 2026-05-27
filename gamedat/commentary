@@ -143,7 +143,7 @@ prop:CORRIDOR: This property defines one or more “corridors” (sight-lines) t
 
 rtn:LOOK-CORRIDOR: Some robots (not Whiz or Waldo!) can see each other at a distance, according to the [prop:CORRIDOR] property.
 
-prop:LINE: The transit line which a given room is on or adjacent too. See [~prop:STATION].
+prop:LINE: The transit line which a given room is on or adjacent to. See [~prop:STATION].
 
 prop:STATION: The transit-line room which is, or is adjacent to, a given room. See [~prop:LINE].
 
@@ -194,14 +194,24 @@ rtn:I-TREMOR2: The second tremor perturbs the Hydroponics settings.
 
 rtn:I-ROBOTKILLER: This timer handles progressive acid damage by incrementing the [glob:DEADBOTS] counters.
 
-### I-FOOD, I-DECAY, I-WEATHER
-
 rtn:I-WIRE-MESSAGE: This timer nudges you about the reset codes once you’ve successfully repaired both cable conduits.
 
 rtn:I-IMP: `IMPOSSIBLE` mode is of course a joke. The star goes nova in two turns and there’s nothing you can do about it.
 	I don’t know if the wonderful game *Outer Wilds* (2019) was inspired by this. I hope so.
 	I know that *I* was inspired to add an `IMPOSSIBLE` mode to my game *The Dreamhold* (2004). Although – *spoiler* – in my game, it’s not truly impossible!
-	
+
+
+glob:RTD-KILLS: The turn on which the food and transit systems go haywire. This is synced with [rtn:I-TREMOR2], which displays the message about damage to those systems.
+	`RTD-KILLS` is normally 75, but is reduced to 2 in `ADVANCED` mode. (A few places in the code compare [~glob:MOVES] to the literal 75 instead of `RTD-KILLS`. This probably means bugs in `ADVANCED` mode.)
+
+rtn:I-FOOD: Adjust the food situation every turn. This is a simple simulation: the [~glob:WATER-LEVEL], [~glob:MINERALS], and [~glob:WATTS] (lighting) variables are compared with their optimal values. This turn's food production ([glob:FOOD-TONS]) is 100 minus the total (absolute) error of those three variables.
+
+glob:FOOD-TONS: How much food is produced by hydroponics this turn. The optimal value is 100. If it falls below 50, some people die of starvation this turn. If it reaches zero, [everybody dies|~src:ROBOTS-612], o the embarrassment.
+
+### I-FOOD, I-DECAY, I-WEATHER
+
+
+
 src:SUSPENDED-1: The game is titled *Suspension*, not *Suspended*, in most of the source code.
 	I got some cheap amusement out of telling my school friends, “I got *Suspended!*” (Which everybody heard as a serious school penalty rather than a game title.)
 
