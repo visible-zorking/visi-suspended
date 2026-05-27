@@ -18,6 +18,21 @@ function evhan_click_id(ev: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id:
     window.dispatchEvent(new CustomEvent('zil-source-location', { detail:dat }));
 }
 
+export function TravelPage()
+{
+    let rctx = useContext(ReactCtx);
+    let zstate = rctx.zstate;
+    
+    return (
+        <div className="ScrollContent">
+            <p>
+		ABOUT...
+            </p>
+            <GoalTable />
+	</div>
+    );
+}
+
 function GoalTable()
 {
     let rctx = useContext(ReactCtx);
@@ -36,7 +51,7 @@ function GoalTable()
         <table className="GoalTable">
             <tbody>
                 <tr>
-                    <th>person</th>
+                    <th>robot</th>
                     <th>final</th>
                     <th>station</th>
                     <th>inter</th>
@@ -76,8 +91,8 @@ function GoalTableRow({ char,  row }: { char:number, row:number[] })
             </td>
             <td>
                 {
-                    obj2 ?
-                    <a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'OBJ:'+obj2.name) }>{ obj2.name }</a>
+                    row[2] ?
+			<span>{ row[2] }</span>
                     : '\u2014'
                 }
             </td>

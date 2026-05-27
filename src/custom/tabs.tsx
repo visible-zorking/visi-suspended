@@ -13,6 +13,7 @@ import { ObjectPage } from '../visi/objpage';
 import { GlobalState } from '../visi/globstate';
 import { SourceFileList } from '../visi/filelist';
 import { FeeliesPage } from './feelies';
+import { TravelPage } from './travel';
 import { AboutPage } from './about';
 import { GameMapBox } from './mapbox';
 
@@ -22,6 +23,7 @@ const tab_list = [
     [ 'map', 'Map' ],
     [ 'globals', 'State' ],
     [ 'timers', 'Timers' ],
+    [ 'travel', 'Travel' ],
     [ 'grammar', 'Grammar' ],
     [ 'filelist', 'Files' ],
     [ 'feelies', 'Feelies' ],
@@ -88,6 +90,9 @@ export function TabbedPane()
         break;
     case 'feelies':
         tabcontent = <FeeliesPage />;
+        break;
+    case 'travel':
+        tabcontent = <TravelPage />;
         break;
     case 'about':
         tabcontent = <AboutPage />;
