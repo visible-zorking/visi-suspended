@@ -33,8 +33,11 @@ export function TravelPage()
             </p>
             <p>
                 (The humans <em>do</em> have their own movement schedule,
-                but it&#x2019;s not managed by a table like in{' '}
-                <em>Deadline</em>. It&#x2019;s a nest of interlocking timers.)
+                but it&#x2019;s not managed by a schedule table like in{' '}
+                <em>Deadline</em>. It&#x2019;s a nest of interlocking timers.
+                See{' '}
+                <a href="#" className="Src_Id" onClick={ (ev) => evhan_click_id(ev, 'RTN:I-PEOPLE1') }><code>I-PEOPLE1</code></a>{' '}
+                for the start of that.)
             </p>
             <p>
                 To manage character movement, the game defines six
