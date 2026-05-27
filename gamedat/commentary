@@ -136,8 +136,16 @@ src:MACROS-73: Most Infocom games use a certain amount of randomness to vary the
 glob:FUMBLE-NUMBER: This game inherits the Zork mechanic where carrying too many objects gives a random chance of fumbling. However, this only applies when carrying more than `FUMBLE-NUMBER` objects, which is seven. And no robot has eight arms! So this never happens.
 
 
+glob:COR-1: The nine `COR-N` tables define nine corridors of rooms that have sight-lines to each other. Each room in a corridor has that bit set in its [prop:CORRIDOR] property.
+	This permits the game to display messages like “Poet is off to the northeast.”
+
+prop:CORRIDOR: This property defines one or more “corridors” (sight-lines) that some robots can see down from a given room. Whiz and Waldo lack distance perception. See [glob:COR-1], [rtn:LOOK-CORRIDOR].
+
+rtn:LOOK-CORRIDOR: Some robots (not Whiz or Waldo!) can see each other at a distance, according to the [prop:CORRIDOR] property.
+
+
 obj:PEOPLE: The group of humans who enter the Complex. They hang around “off-stage” in [obj:UD-TUBE] until it’s time for them to arrive.
-	If you `COUNT HUMANS`, you can discover that there are two of them. Otherwise, the game never says, which is remarkably distancing.
+	If you `COUNT HUMANS`, you can discover that there are two of them. Otherwise, the game never says.
 
 glob:PR-NUMBER: The state variable that determines what the [obj:PEOPLE] are doing.
 
@@ -189,6 +197,8 @@ src:SUSPENDED-1: The game is titled *Suspension*, not *Suspended*, in most of th
 obj:HELL: This exists only so that you can tell a robot `GO TO HELL`.
 
 src:GOAL-168: There is no `SKY4`. The compiler silently stores a zero in that entry.
+	(This seems to be a recurring problem. *Deadline* had a nonexistent `SHALL-3` in one of its transit tables.)
+### make relative link to Deadline src:GOAL-37
 
 src:ROBOTS-878: The [obj:PEOPLE] object has two [prop:CLC-TXT] definitions. This is technically illegal but the compiler apparently didn’t report an error.
 	Because of the way Z-machine properties work, only the second entry has any effect. The strings in the first entry appear in the game file, but can never be printed. I have greyed them out to indicate this.
