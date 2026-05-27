@@ -149,6 +149,7 @@ prop:STATION: The transit-line room which is, or is adjacent to, a given room. S
 
 glob:A-LINE: These tables define the six “transit lines” which let robots travel around the map. Every room is either on or adjacent to a transit line.
 
+glob:GOAL-TABLES: The current movement goal of each character. The scheme is explained in the “Travel” tab.
 
 obj:PEOPLE: The group of humans who enter the Complex. They hang around “off-stage” in [obj:UD-TUBE] until it’s time for them to arrive.
 	If you `COUNT HUMANS`, you can discover that there are two of them. Otherwise, the game never says.
