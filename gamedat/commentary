@@ -210,8 +210,17 @@ rtn:I-FOOD: Adjust the food situation every turn. This is a simple simulation: t
 
 glob:FOOD-TONS: How much food is produced by hydroponics this turn. The optimal value is 100. If it falls below 50, some people die of starvation this turn. If it reaches zero, [everybody dies|~src:ROBOTS-612], o the embarrassment.
 
-### I-FOOD, I-DECAY, I-WEATHER
+rtn:I-DECAY: Slowly increase the [glob:DECAY] value over time.
 
+glob:DECAY: The amount that the second weather control dial ([~obj:WDIAL2]) is off-kilter. See [rtn:I-WEATHER].
+
+rtn:I-WEATHER: Adjust the three tower pressure values ([~glob:PRESSURE1], [~glob:PRESSURE2], [~glob:PRESSURE3]) based on the dial settings. (Note that dial 2 has an error of [glob:DECAY], which increases slowly over time.) Then adjust the [glob:WINDS] and [glob:DEGREES] (temperature) based on the pressure values.
+	The logic is that [glob:WINDS] is the total (absolute) difference between the tower pressures, and [glob:DEGREES] is based on their average. 
+	
+glob:WINDS: The wind speed on the surface. If this goes over 20, people die. Over 50 is worse.
+
+glob:DEGREES: The surface temperature. Under 40, people die.
+	(Apparently Contra uses Fahrenheit, and people are immune to heatstroke.)
 
 
 src:SUSPENDED-1: The game is titled *Suspension*, not *Suspended*, in most of the source code.
