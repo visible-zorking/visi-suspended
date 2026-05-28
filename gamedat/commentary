@@ -179,8 +179,6 @@ rtn:I-SCORE: This timer works out how many surface humans die every turn. It set
 	This includes a call to [rtn:DO-RTD], which handles the transit part of the death count.
 	If you manage to kill 30 million people, the game gives up on you. (See [~rtn:ALL-DEAD].)
 
-rtn:DO-RTD: Add transit deaths to [glob:SCORE]. This is part of the [rtn:I-SCORE] timer. It’s also invoked if you flip the switches in [Transit Control|~obj:RTD]; this ensures that the transit death rate drops (or rises!) immediately.
-
 rtn:I-FOLLOW: This timer handles ongoing `FOLLOW` commands.
 
 rtn:I-IRIS-HINTS: Iris periodically reminds you that she needs her visuals fixed.
@@ -204,7 +202,11 @@ rtn:I-IMP: `IMPOSSIBLE` mode is of course a joke. The star goes nova in two turn
 glob:RTD-KILLS: The turn on which the food and transit systems go haywire. This is synced with [rtn:I-TREMOR2], which displays the message about damage to those systems.
 	`RTD-KILLS` is normally 75, but is reduced to 2 in `ADVANCED` mode. (A few places in the code compare [~glob:MOVES] to the literal 75 instead of `RTD-KILLS`. This probably means bugs in `ADVANCED` mode.)
 
-rtn:I-FOOD: Adjust the food situation every turn. This is a simple simulation: the [~glob:WATER-LEVEL], [~glob:MINERALS], and [~glob:WATTS] (lighting) variables are compared with their optimal values. This turn's food production ([glob:FOOD-TONS]) is 100 minus the total (absolute) error of those three variables.
+rtn:DO-RTD: Add transit deaths to [glob:SCORE]. This is part of the [rtn:I-SCORE] timer. It’s also invoked if you flip the switches in [Transit Control|~obj:RTD]; this ensures that the transit death rate drops (or rises!) immediately.
+	The logic is straightforward. Taxi and floater usage go up every turn as long as the switches are on. If the turn is past [glob:RTD-KILLS], there are crashes (although these aren’t really connected to the usage values). Turning off the floater switch immediately kills everyone in the floaters, but prevents further deaths.
+	As for the ramps, they accelerate wildly and kill people. Turning off the switch brings the speed back down, although not instantly.
+
+rtn:I-FOOD: Adjust the food situation every turn. This is a simple simulation: the [~glob:WATER-LEVEL], [~glob:MINERALS], and [~glob:WATTS] (lighting) variables are compared with their optimal values. This turn’s food production ([glob:FOOD-TONS]) is 100 minus the total (absolute) error of those three variables.
 
 glob:FOOD-TONS: How much food is produced by hydroponics this turn. The optimal value is 100. If it falls below 50, some people die of starvation this turn. If it reaches zero, [everybody dies|~src:ROBOTS-612], o the embarrassment.
 
