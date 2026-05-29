@@ -170,9 +170,22 @@ rtn:I-STEAL: This timer increments the [glob:SLEEPERS] counter as the [obj:PEOPL
 rtn:I-CHASEAUDA: Handles the [obj:PEOPLE] chasing a robot who has grabbed the [~obj:TOOLBAG]. The function name is misleading; it can be any robot ([~glob:RTHIEF]).
 	If you lead the humans to observe the acid leak, they’ll fix it and then head to the [~obj:REC-AREA]. Otherwise, they’ll eventually catch up with you, get the toolbag back, and return to their original plan ([rtn:I-PEOPLE2]).
 
-rtn:I-PEOPLE2: Send the [obj:PEOPLE] off to the [~obj:INNER-CORE].
+rtn:I-PEOPLE2: Send the [obj:PEOPLE] off to the [~obj:INNER-CORE]. When they arrive, they will spend a few turns looking up replacement procedures ([rtn:I-PEOPLE4]).
 
-### more people timers
+rtn:I-PEOPLE4: Handles the [obj:PEOPLE] looking up info in the [~obj:INNER-CORE]. When they’re done, they’ll head to the [~obj:HALL-END] to use the transit car ([rtn:I-CAR-WAIT]).
+
+rtn:I-CAR-WAIT: If the car is available, the [obj:PEOPLE] will take it to the bio area and begin reviving a replacement clone ([rtn:I-KILL]).
+	If a robot is camping in the car or has moved it to the far end, the humans will wait up to 75 turns. After that they give up and head towards the [~obj:CPU-ROOM] to shut you down, clone or no clone.
+	
+rtn:I-KILL: Handles the [obj:PEOPLE] working to revive a clone. This takes 15 turns. After that, they’re on their way back to the [~obj:CPU-ROOM] to shut you down.
+
+rtn:PARRIVE5: This travel callback executes when the [obj:PEOPLE] reach the [~obj:CPU-ROOM] with your clone in tow. More precisely, it executes *you*.
+
+rtn:PARRIVE5: This travel callback executes when the [obj:PEOPLE] reach the [~obj:CPU-ROOM] without a clone. You still die, of course.
+
+rtn:I-STARCROSS: Handles the [obj:PEOPLE] waiting in the [~obj:REC-AREA]. They’ve just fixed the acid leak and are giving you a chance to repair everything else.
+	After 200 turns, they give up and head to the [~obj:INNER-CORE]. See [rtn:I-PEOPLE4].
+	They spend their down-time playing *Starcross*. 200 turns is definitely not enough time to win *Starcross*.
 
 
 rtn:I-SCORE: This timer works out how many surface humans die every turn. It sets [glob:SCORE] and increases [glob:TOTAL-SCORE] by that value.
