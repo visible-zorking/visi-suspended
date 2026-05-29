@@ -92,6 +92,7 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
 
     let originobj: number = zstate.globals[114];  // WINNER
     let mobmap = new Map<number, number[]>();
+    let moboffset = new Map<number, boolean>();
 
     for (let mobid of robot_ids) {
         if (!mobid)
@@ -102,6 +103,9 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
             if (!robj || robj.parent == 0 || robj.parent == gamedat_ids.ROOMS)
                 break;
             mobroom = robj.parent;
+            // Check for the three conveyor belts.
+            if (mobroom == 37 || mobroom == 38 || mobroom == 39)
+                moboffset.set(mobid, true);
         }
         if (mobroom && mobroom != mobid) {
             var rls = mobmap.get(mobroom);
@@ -144,6 +148,9 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
             mobcen = throomobj.center;
             let offset = offsets[index];
             let robcen = { x:mobcen.x + offx*offset.x, y:mobcen.y + offy*offset.y };
+            // Hacky offset when on a conveyor belt.
+            if (moboffset.has(mobid))
+                robcen.x += 21;
             let mtransform = 'translate('+robcen.x+','+robcen.y+')';
             let cla = (mobid == originobj) ? '' : 'Noncurrent';
             ls.push({ id:mobkey, transform:mtransform, class:cla });
