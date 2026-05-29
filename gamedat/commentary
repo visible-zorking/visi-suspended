@@ -256,6 +256,8 @@ src:OBJECTS-1205: “Emmak”? I feel like I missed a joke.
 
 obj:DEADBOT: Calling the dead super-bot “Fred” is a minor in-joke. Infocom’s office mainframe was named Fred.
 
+src:PEOPLE-284: The game clearly wants to avoid assumptions about the player’s gender, but these dialogue snippets slip in several places. A [development version|https://github.com/historicalsource/suspended/blob/master/people.zil#L289] of the source code corrects these (“*the* plug”, “*the* clone”). However, that version was never released.
+
 ### make these relative links to Starcross.
 
 rtn:ADJ-CHECK: This adjective list is copied over from *Starcross!* 
