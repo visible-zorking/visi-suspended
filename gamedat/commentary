@@ -175,17 +175,19 @@ rtn:I-PEOPLE2: Send the [obj:PEOPLE] off to the [~obj:INNER-CORE]. When they arr
 rtn:I-PEOPLE4: Handles the [obj:PEOPLE] looking up info in the [~obj:INNER-CORE]. When they’re done, they’ll head to the [~obj:HALL-END] to use the transit car ([rtn:I-CAR-WAIT]).
 
 rtn:I-CAR-WAIT: If the car is available, the [obj:PEOPLE] will take it to the bio area and begin reviving a replacement clone ([rtn:I-KILL]).
-	If a robot is camping in the car or has moved it to the far end, the humans will wait up to 75 turns. After that they give up and head towards the [~obj:CPU-ROOM] to shut you down, clone or no clone.
+	If a robot is camping in the car or has moved it to the far end, the humans will wait up to 75 turns. After that they give up and head towards the [~obj:CPU-ROOM] to shut you down, clone or no clone. (See [rtn:PARRIVE7].)
 	
-rtn:I-KILL: Handles the [obj:PEOPLE] working to revive a clone. This takes 15 turns. After that, they’re on their way back to the [~obj:CPU-ROOM] to shut you down.
+rtn:I-KILL: Handles the [obj:PEOPLE] working to revive a clone. This takes 15 turns. After that, they’re on their way back to the [~obj:CPU-ROOM] to shut you down. (See [rtn:PARRIVE5].)
 
 rtn:PARRIVE5: This travel callback executes when the [obj:PEOPLE] reach the [~obj:CPU-ROOM] with your clone in tow. More precisely, it executes *you*.
 
-rtn:PARRIVE5: This travel callback executes when the [obj:PEOPLE] reach the [~obj:CPU-ROOM] without a clone. You still die, of course.
+rtn:PARRIVE7: This travel callback executes when the [obj:PEOPLE] reach the [~obj:CPU-ROOM] without a clone. You still die, of course.
 
 rtn:I-STARCROSS: Handles the [obj:PEOPLE] waiting in the [~obj:REC-AREA]. They’ve just fixed the acid leak and are giving you a chance to repair everything else.
 	After 200 turns, they give up and head to the [~obj:INNER-CORE]. See [rtn:I-PEOPLE4].
 	They spend their down-time playing *Starcross*. 200 turns is definitely not enough time to win *Starcross*.
+
+glob:PLAY-STARCROSS: A counter for how long the [obj:PEOPLE] have played *Starcross* in the [~obj:REC-AREA]. See [rtn:I-STARCROSS].
 
 
 rtn:I-SCORE: This timer works out how many surface humans die every turn. It sets [glob:SCORE] and increases [glob:TOTAL-SCORE] by that value.
