@@ -136,6 +136,14 @@ src:MACROS-73: Most Infocom games use a certain amount of randomness to vary the
 	
 glob:FUMBLE-NUMBER: This game inherits the Zork mechanic where carrying too many objects gives a random chance of fumbling. However, this only applies when carrying more than `FUMBLE-NUMBER` objects, which is seven. And no robot has eight arms! So this never happens.
 
+src:PARSER-1087: The parser in *Suspended* is somewhat diegetic. Messages that are normally out-of-world are phrased as if they came from the Filtering Computers. “FC: I don’t know the word ...”
+	But when you say `WHIZ, QUERY ABOUT ...`, you’re querying the Computer Library Core, so there’s a whole new set of parser messages. Disambiguation starts with this line, and proceeds to one of the [glob:CROWDED] or [glob:NOT-FOUND] messages.
+	The commented-out lines would force the game clock to advance. Apparently they considered the idea of *actually* making you hold on a minute (or a turn).
+
+glob:CROWDED: Messages for successfully resolving an ambiguous object in a `QUERY ABOUT` action. See [this parser code|src:PARSER-1087].
+
+glob:NOT-FOUND: Messages for failing to find an object in a `QUERY ABOUT` action. See [this parser code|src:PARSER-1087].
+
 
 glob:COR-1: The nine `COR-N` tables define nine corridors of rooms that have sight-lines to each other. Each room in a corridor has that bit set in its [prop:CORRIDOR] property.
 	This permits the game to display messages like “Poet is off to the northeast.”
