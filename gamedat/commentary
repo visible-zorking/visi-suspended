@@ -256,7 +256,7 @@ src:GOAL-168: There is no `SKY4`. The compiler silently stores a zero in that en
 	(This seems to be a recurring problem. *Deadline* had a nonexistent `SHALL-3` in one of its transit tables.)
 ### make relative link to Deadline src:GOAL-37
 
-obj:FC1: This room is missing the exit southwest to [obj:MIDMIST]. It’s easy to overlook, because the [~glob:C-LINE] connects those rooms, and `GO TO...` commands follow the transit lines rather than the room exits.
+obj:FC1: This room is missing the exit southwest to [~obj:MIDMIST]. It’s easy to overlook, because the [~glob:C-LINE] connects those rooms, and `GO TO...` commands follow the transit lines rather than the room exits.
 	(c:Torbjörn Andersson)
 
 obj:HALL-STOP4: Valid exits exist between this room and the [~obj:REC-AREA] to the north. But they’re not on the original printed map. (I’ve added the connection to the map in the Map tab.)
