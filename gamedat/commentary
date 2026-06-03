@@ -256,6 +256,9 @@ src:GOAL-168: There is no `SKY4`. The compiler silently stores a zero in that en
 	(This seems to be a recurring problem. *Deadline* had a nonexistent `SHALL-3` in one of its transit tables.)
 ### make relative link to Deadline src:GOAL-37
 
+obj:FC1: This room is missing the exit southwest to [obj:MIDMIST]. It’s easy to overlook, because the [~glob:C-LINE] connects those rooms, and `GO TO...` commands follow the transit lines rather than the room exits.
+	(c:Torbjörn Andersson)
+
 src:ROBOTS-878: The [obj:PEOPLE] object has two [prop:CLC-TXT] definitions. This is technically illegal but the compiler apparently didn’t report an error.
 	Because of the way Z-machine properties work, only the second entry has any effect. The strings in the first entry appear in the game file, but can never be printed. I have greyed them out to indicate this.
 
@@ -275,5 +278,4 @@ rtn:V-LOOK-SAFELY: This is the `LOOK AT __ THROUGH __` command, which is copied 
 	(The “X isn’t transparent” message is misleading, really. Only Iris would notice! And Waldo’s sonar can penetrate some surfaces, and so on.)
 	The action is called `LOOK-SAFELY` because *Starcross* has a laser that can blind you.
 
-
-
+src:PARSER-288: This adverb check is copied from [Deadline|relative:../deadline/#SRC:PARSER-265] and *Starcross*. It's only active in *Deadline*, though.
