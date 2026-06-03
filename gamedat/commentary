@@ -259,6 +259,8 @@ src:GOAL-168: There is no `SKY4`. The compiler silently stores a zero in that en
 obj:FC1: This room is missing the exit southwest to [obj:MIDMIST]. It’s easy to overlook, because the [~glob:C-LINE] connects those rooms, and `GO TO...` commands follow the transit lines rather than the room exits.
 	(c:Torbjörn Andersson)
 
+obj:HALL-STOP4: Valid exits exist between this room and the [~obj:REC-AREA] to the north. But they’re not on the original printed map. (I’ve added the connection to the map in the Map tab.)
+
 src:ROBOTS-878: The [obj:PEOPLE] object has two [prop:CLC-TXT] definitions. This is technically illegal but the compiler apparently didn’t report an error.
 	Because of the way Z-machine properties work, only the second entry has any effect. The strings in the first entry appear in the game file, but can never be printed. I have greyed them out to indicate this.
 
