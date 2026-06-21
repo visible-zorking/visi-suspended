@@ -284,3 +284,5 @@ src:PARSER-288: This adverb check is copied from [Deadline|relative:../deadline/
 
 src:PARSER-202: This check for titles is copied from [Deadline|relative:../deadline/#SRC:PARSER-183]. It’s commented out here, since robots always use the informal.
 
+rtn:ENOUGH-TRADING: In this routine definition, the `<` and `>` delimiters are unbalanced. There’s one close-bracket too many.
+	Any modern language would scream bloody murder about this kind of mistake, but apparently Infocom’s ZIL compiler silently ignored it. So did the MDL compiler that it was based on. See [discussion|https://intfiction.org/t/question-about-infocom-zil-syntax/80690/9].
