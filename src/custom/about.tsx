@@ -138,7 +138,8 @@ export function AboutPage()
                     originally came with a full-color map and six chips to
                     track your robots&#x2019; locations. The
                     {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'map') }>Map</a>{' '}
-                    tab handles this for you. The 
+                    tab handles this for you. (If a robot is moving, a
+                    grey marker indicates its current destination.) The 
                     {' '}<a className="Internal" href="#" onClick={ (ev)=>evhan_click_tab(ev, 'travel') }>Travel</a>{' '}
                     tab shows the internal tables that manage robot movement.
                 </p>
