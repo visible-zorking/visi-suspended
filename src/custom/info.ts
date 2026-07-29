@@ -30,3 +30,6 @@ export const robot_names: string[] = [
 export const robot_ids: number[] = [
     0, 158, 155, 152, 149, 146, 144, 140
 ];
+export const robot_ids_inv: { [key: number]: number } = {
+    0:0, 158:1, 155:2, 152:3, 149:4, 146:5, 144:6, 140:7
+};

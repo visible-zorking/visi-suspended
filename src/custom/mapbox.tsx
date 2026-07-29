@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext, useState } from 'react';
 
-import { robot_names, robot_ids } from './info';
+import { robot_names, robot_ids, robot_ids_inv } from './info';
 import { gamedat_ids, gamedat_object_ids, gamedat_roominfo_names } from '../visi/gamedat';
 import { ObjectData } from '../visi/gametypes';
 import { ZStatePlus } from '../visi/zstate';
@@ -9,6 +9,7 @@ import { ZStatePlus } from '../visi/zstate';
 import { GameMap, OptPosition, ScrollCenterInfo, ExtraToggle } from '../visi/map';
 import { Commentary } from '../visi/widgets';
 import { ObjListSorter } from './cwidgets';
+import { SpecificSuspended } from './modgame';
 
 // This is basically terrible but I'm don't have the energy to create an Effect
 let currentFollowKey: number = 0;
@@ -85,6 +86,8 @@ const room_offsets = [
 
 function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
 {
+    let specifics = zstate.specifics as SpecificSuspended;
+    
     let ls = [];
 
     let cla = currentShowTransit ? 'Visible' : 'Invisible';
@@ -115,6 +118,20 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
             else {
                 rls.push(mobid);
             }
+
+            let mobindex = robot_ids_inv[mobid];
+            if (mobindex) {
+                let mobdestroom = specifics.goaltables[mobindex][0];
+                if (mobdestroom && mobdestroom != mobroom) {
+                    rls = mobmap.get(mobdestroom);
+                    if (!rls) {
+                        mobmap.set(mobdestroom, [ mobid+1000 ]);
+                    }
+                    else {
+                        rls.push(mobid+1000);
+                    }
+                }
+            }
         }
     }
 
@@ -138,24 +155,41 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
         
         let index = 0;
         for (let mobid of rls) {
-            let mobj = gamedat_object_ids.get(mobid);
-            if (!mobj) {
-                continue;
+            if (mobid < 1000) {
+                let mobj = gamedat_object_ids.get(mobid);
+                if (!mobj) {
+                    continue;
+                }
+                let mobkey = "mob-" + mobj.name.toLowerCase();
+                let mobcen: OptPosition = null;
+                let mobloc: ObjectData|undefined;
+                mobcen = throomobj.center;
+                let offset = offsets[index];
+                let robcen = { x:mobcen.x + offx*offset.x, y:mobcen.y + offy*offset.y };
+                // Hacky offset when on a conveyor belt.
+                if (moboffset.has(mobid))
+                    robcen.x += 21;
+                let mtransform = 'translate('+robcen.x+','+robcen.y+')';
+                let cla = (mobid == originobj) ? '' : 'Noncurrent';
+                ls.push({ id:mobkey, transform:mtransform, class:cla });
+                index++;
             }
-            let mobkey = "mob-" + mobj.name.toLowerCase();
-            let mobcen: OptPosition = null;
-            let mobloc: ObjectData|undefined;
-            mobcen = throomobj.center;
-            let offset = offsets[index];
-            let robcen = { x:mobcen.x + offx*offset.x, y:mobcen.y + offy*offset.y };
-            // Hacky offset when on a conveyor belt.
-            if (moboffset.has(mobid))
-                robcen.x += 21;
-            let mtransform = 'translate('+robcen.x+','+robcen.y+')';
-            let cla = (mobid == originobj) ? '' : 'Noncurrent';
-            ls.push({ id:mobkey, transform:mtransform, class:cla });
+            else {
+                let mobj = gamedat_object_ids.get(mobid-1000);
+                if (!mobj) {
+                    continue;
+                }
+                let mobkey = "mob-dest-" + mobj.name.toLowerCase();
+                let mobcen: OptPosition = null;
+                let mobloc: ObjectData|undefined;
+                mobcen = throomobj.center;
+                let offset = offsets[index];
+                let robcen = { x:mobcen.x + offx*offset.x, y:mobcen.y + offy*offset.y };
+                let mtransform = 'translate('+robcen.x+','+robcen.y+')';
+                ls.push({ id:mobkey, transform:mtransform });
+                index++;
+            }
 
-            index++;
         }
     }
 
