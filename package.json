@@ -14,7 +14,7 @@
     "rearrange-tables": "python3 visiterp/pyana/parse.py --game suspended-mac-r8-s840521 -z gamesrc/suspended.zil --zcode gamedat/suspended-mac-r8-s840521.z3 --gamedat",
     "recolor-source": "python3 visiterp/pyana/parse.py --game suspended-mac-r8-s840521 -z gamesrc/suspended.zil --src --reindent",
     "regenerate-commentary": "python3 visiterp/pyana/comgen.py gamedat/commentary",
-    "reparse-map": "python3 visiterp/pyana/mapparse.py gamedat/base-map.svg"
+    "reparse-map": "python3 visiterp/pyana/mapparse.py gamedat/base-map.svg -o pic/map2.svg"
   },
   "type": "module",
   "dependencies": {

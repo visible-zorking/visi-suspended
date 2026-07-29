@@ -44,7 +44,7 @@ export function GameMapBox()
                     <label htmlFor="showtransit">Show Transit Layer</label>
                 </div>
             </div>
-            <GameMap extras={ map_adjustments } scrollcenter={ scroll_center } />
+            <GameMap filename={ 'pic/map2.svg' } extras={ map_adjustments } scrollcenter={ scroll_center } />
         </div>
     );
 }
