@@ -123,13 +123,17 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
             if (mobindex) {
                 let mobdestroom = specifics.goaltables[mobindex][0];
                 if (mobdestroom && mobdestroom != mobroom) {
-                    rls = mobmap.get(mobdestroom);
-                    if (!rls) {
-                        mobmap.set(mobdestroom, [ mobid+1000 ]);
-                    }
-                    else {
-                        rls.push(mobid+1000);
-                    }
+                    // keep it
+                }
+                else {
+                    mobdestroom = 0;
+                }
+                rls = mobmap.get(mobdestroom);
+                if (!rls) {
+                    mobmap.set(mobdestroom, [ mobid+1000 ]);
+                }
+                else {
+                    rls.push(mobid+1000);
                 }
             }
         }
@@ -139,6 +143,28 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
         let rls = mobmap.get(roomid);
         if (!rls)
             continue;
+
+        if (roomid == 0) {
+            for (let mobid of rls) {
+                if (mobid < 1000) {
+                    let mobj = gamedat_object_ids.get(mobid);
+                    if (!mobj) {
+                        continue;
+                    }
+                    let mobkey = "mob-" + mobj.name.toLowerCase();
+                    ls.push({ id:mobkey, class:'Offstage' });
+                }
+                else {
+                    let mobj = gamedat_object_ids.get(mobid-1000);
+                    if (!mobj) {
+                        continue;
+                    }
+                    let mobkey = "mob-dest-" + mobj.name.toLowerCase();
+                    ls.push({ id:mobkey, class:'Offstage' });
+                }
+            }
+            continue;
+        }
 
         let roomdat = gamedat_object_ids.get(roomid);
         if (!roomdat)
@@ -186,7 +212,7 @@ function map_adjustments(zstate: ZStatePlus): ExtraToggle[]
                 let offset = offsets[index];
                 let robcen = { x:mobcen.x + offx*offset.x, y:mobcen.y + offy*offset.y };
                 let mtransform = 'translate('+robcen.x+','+robcen.y+')';
-                ls.push({ id:mobkey, transform:mtransform });
+                ls.push({ id:mobkey, transform:mtransform, class:'' });
                 index++;
             }
 
