@@ -29,6 +29,7 @@ obj:LOCAL-GLOBALS: This is a container for scenery objects like [~obj:MONITOR], 
 
 
 MAP-LEGEND: *Suspended* uses the same NPC transit logic as *Deadline*. Turn on “Show Transit Layer” to display the movement paths (blue) and sightlines (pink).
+	If a robot is moving, a grey marker shows its current destination.
 	Note that [obj:UD-TUBE] is a hidden room where the [obj:PEOPLE] start. Robots cannot go there.
 	
 obj:UD-TUBE: A hidden room where the [obj:PEOPLE] start. It’s west of the [~obj:STERILE-AREA], but robots cannot go there.
