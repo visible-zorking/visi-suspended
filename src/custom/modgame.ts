@@ -5,6 +5,8 @@ import { gamedat_routine_names, gamedat_global_names, gamedat_string_map } from 
 export type SpecificSuspended = {
     goaltables: number[][],
     followtbl: number[],
+    robotfollow: number[],
+    dragtbl: number[],
 };
 
 export function get_specifics(engine: GnustoEngine, state: ZState): SpecificSuspended
@@ -25,9 +27,23 @@ export function get_specifics(engine: GnustoEngine, state: ZState): SpecificSusp
         followtbl.push(engine.getUnsignedWord(9646 + 2*char));
     }
     
+    // ROBOT-FOLLOW
+    let robotfollow = [];
+    for (let char=0; char<6; char++) {
+        robotfollow.push(engine.getUnsignedWord(9818 + 2*char));
+    }
+    
+    // DRAG-TBL
+    let dragtbl = [];
+    for (let char=0; char<7; char++) {
+        dragtbl.push(engine.getUnsignedWord(9832 + 2*char));
+    }
+    
     return {
         goaltables: goaltables,
         followtbl: followtbl,
+	robotfollow: robotfollow,
+	dragtbl: dragtbl,
     };
 }
 
