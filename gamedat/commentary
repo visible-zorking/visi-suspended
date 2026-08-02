@@ -59,6 +59,12 @@ glob:NAME-TBL: The array of robots in [glob:ROFF] order. (With [obj:PEOPLE] as t
 
 glob:ROBOT-NAMES: The array of robot names, in [glob:ROFF] order. The robots’ object values are in [glob:NAME-TBL].
 
+glob:DRAG-TBL: This table indicates which (incapacitated) robot is being dragged by a given (active) robot.
+
+glob:FOLLOW-TBL: This table indicates which robot is being `FOLLOW`ed by a given robot. (Not the same as [glob:ROBOT-FOLLOW]!)
+
+glob:ROBOT-FOLLOW: This table indicates which robot a given robot has been told to `GO TO`. (Not the same as [glob:FOLLOW-TBL]! The name is confusing. “ROBOT-SEEKING” would have been clearer.)
+
 glob:LAST-ROOM: As the comment says, a table used by `FOLLOW`.
 
 glob:DEADBOTS: Indicates which robots are suffering from acid damage. The value is [set to 1|~src:GOAL-311] when a robot encounters acid; after 30 turns, the robot dies.
@@ -164,6 +170,20 @@ glob:GOAL-TABLES: The current movement goal of each character. The scheme is exp
 glob:TRANSFER-TABLE: This is effectively a 6x6 table. Each entry is a pair of rooms which connects one “transit line” to another. If two lines don’t cross, the entry gives you the connection to the line that will get you one step closer.
 	(The “0 0” pairs are the blank diagonal entries.)
 
+rtn:FOLLOW-GOAL: Move a robot one step towards its current destination (as indicated by [glob:GOAL-TABLES]). [rtn:I-FOLLOW] calls this for each robot in motion.
+	If the robot has reached its goal, call [rtn:ARRIVAL]. Otherwise, figure out which room is next (using [glob:TRANSFER-TABLE] and the [transit lines|glob:A-LINE]), and call [rtn:MOVE-RBT].
+	
+rtn:MOVE-RBT: Move a robot, and also any robot which is assigned to `FOLLOW` it. Calls [rtn:MOVE-RBT?] to do the dirty work.
+
+rtn:MOVE-RBT?: A low-level routine which tries to move an individual robot. It checks for impassable exits, which means it can fail. Thus the question mark.
+	This calls the even lower-level [rtn:DO-THE-MOVE] routine to handle the actual object juggling.
+	This is called both by the transit-line system ([rtn:MOVE-RBT]) and by individual direction commands ([~rtn:GOTO]).
+
+rtn:DO-THE-MOVE: The lowest-level routine for moving an individual robot. This places the robot in the destination room. If the robot is dragging another (incapacitated) robot, this also moves the dragee. (See [glob:DRAG-TBL].)
+	This is called by [rtn:MOVE-RBT?]
+
+rtn:ARRIVAL: Called when a moving robot reaches its destination. Clears its [glob:GOAL-TABLES] entry, then calls [~rtn:G-ROBOT] to announce the arrival.
+
 
 obj:PEOPLE: The group of humans who enter the Complex. They hang around “off-stage” in [obj:UD-TUBE] until it’s time for them to arrive.
 	If you `COUNT HUMANS`, you can discover that there are two of them. Otherwise, the game never says.
@@ -204,7 +224,7 @@ rtn:I-SCORE: This timer works out how many surface humans die every turn. It set
 	This includes a call to [rtn:DO-RTD], which handles the transit part of the death count.
 	If you manage to kill 30 million people, the game gives up on you. (See [~rtn:ALL-DEAD].)
 
-rtn:I-FOLLOW: This timer handles ongoing `FOLLOW` commands.
+rtn:I-FOLLOW: This timer handles ongoing robot movement. See [rtn:FOLLOW-GOAL].
 
 rtn:I-IRIS-HINTS: Iris periodically reminds you that she needs her visuals fixed.
 
