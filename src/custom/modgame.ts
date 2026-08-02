@@ -42,8 +42,8 @@ export function get_specifics(engine: GnustoEngine, state: ZState): SpecificSusp
     return {
         goaltables: goaltables,
         followtbl: followtbl,
-	robotfollow: robotfollow,
-	dragtbl: dragtbl,
+        robotfollow: robotfollow,
+        dragtbl: dragtbl,
     };
 }
 
