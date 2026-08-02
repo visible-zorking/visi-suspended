@@ -67,11 +67,20 @@ export function TravelPage()
                 in this game.)
             </p>
             <p>
-                The &#x201C;follow&#x201D; column is a separate table
+                The last columns are separate tables which I have combined
+                here for simplicity.
+                &#x201C;Seek&#x201D;
+                (<a href="#" className="Src_Id" onClick={ (ev) => evhan_click_id(ev, 'GLOB:ROBOT-FOLLOW') }><code>ROBOT-FOLLOW</code></a>)
+                is set when a robot is told to <code>GO TO</code> another
+                robot&#x2019;s location.
+                &#x201C;Follow&#x201D;
                 (<a href="#" className="Src_Id" onClick={ (ev) => evhan_click_id(ev, 'GLOB:FOLLOW-TBL') }><code>FOLLOW-TBL</code></a>)
-                that shows when one robot is told to
+                shows when one robot is told to
                 {' '}<code>FOLLOW</code> another.
-                (I've combined the tables here for simplicity.)
+                &#x201C;Dragging&#x201D;
+                (<a href="#" className="Src_Id" onClick={ (ev) => evhan_click_id(ev, 'GLOB:DRAG-TBL') }><code>DRAG-TBL</code></a>)
+                shows when one robot is told to
+                {' '}<code>DRAG</code> a damaged compatriot.
             </p>
             <GoalTable />
         </div>
