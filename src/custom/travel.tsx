@@ -88,7 +88,7 @@ function GoalTable()
     let rowls = [];
     for (let char=1; char<=7; char++) {
         rowls.push(
-            <GoalTableRow key={ char } char={ char } row={ specifics.goaltables[char] } follow={ specifics.followtbl[char-1] } />
+            <GoalTableRow key={ char } char={ char } row={ specifics.goaltables[char] } follow={ specifics.followtbl[char-1] } seek={ specifics.robotfollow[char-1] } />
         );
     }
     
@@ -101,6 +101,7 @@ function GoalTable()
                     <th>station</th>
                     <th>inter</th>
                     <th>run</th>
+                    <th>seek</th>
                     <th>follow</th>
                 </tr>
                 { rowls }
@@ -109,13 +110,14 @@ function GoalTable()
     );
 }
 
-function GoalTableRow({ char, row, follow }: { char:number, row:number[], follow:number })
+function GoalTableRow({ char, row, follow, seek }: { char:number, row:number[], follow:number, seek:number })
 {
     let rctx = useContext(ReactCtx);
 
     let obj0 = gamedat_object_ids.get(row[0]);
     let obj1 = gamedat_object_ids.get(row[1]);
     let objf = gamedat_object_ids.get(follow);
+    let objseek = gamedat_object_ids.get(seek);
     
     return (
         <tr>
@@ -145,6 +147,13 @@ function GoalTableRow({ char, row, follow }: { char:number, row:number[], follow
                 { (row[4] ?
                    <span className="TimerActive">&#x2611;</span> :
                    <span className="TimerInactive">&#x2610;</span>) }
+            </td>
+            <td>
+                {
+                    objseek ?
+                    <a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'OBJ:'+objseek.name) }>{ objseek.name }</a>
+                    : '\u2014'
+                }
             </td>
             <td>
                 {
