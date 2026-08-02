@@ -88,7 +88,7 @@ function GoalTable()
     let rowls = [];
     for (let char=1; char<=7; char++) {
         rowls.push(
-            <GoalTableRow key={ char } char={ char } row={ specifics.goaltables[char] } follow={ specifics.followtbl[char-1] } seek={ specifics.robotfollow[char-1] } />
+            <GoalTableRow key={ char } char={ char } row={ specifics.goaltables[char] } follow={ specifics.followtbl[char-1] } seek={ specifics.robotfollow[char-1] } drag={ specifics.dragtbl[char-1] } />
         );
     }
     
@@ -103,6 +103,7 @@ function GoalTable()
                     <th>run</th>
                     <th>seek</th>
                     <th>follow</th>
+                    <th>dragging</th>
                 </tr>
                 { rowls }
             </tbody>
@@ -110,7 +111,7 @@ function GoalTable()
     );
 }
 
-function GoalTableRow({ char, row, follow, seek }: { char:number, row:number[], follow:number, seek:number })
+function GoalTableRow({ char, row, follow, seek, drag }: { char:number, row:number[], follow:number, seek:number, drag:number })
 {
     let rctx = useContext(ReactCtx);
 
@@ -118,6 +119,7 @@ function GoalTableRow({ char, row, follow, seek }: { char:number, row:number[], 
     let obj1 = gamedat_object_ids.get(row[1]);
     let objf = gamedat_object_ids.get(follow);
     let objseek = gamedat_object_ids.get(seek);
+    let objdrag = gamedat_object_ids.get(drag);
     
     return (
         <tr>
@@ -159,6 +161,13 @@ function GoalTableRow({ char, row, follow, seek }: { char:number, row:number[], 
                 {
                     objf ?
                     <a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'OBJ:'+objf.name) }>{ objf.name }</a>
+                    : '\u2014'
+                }
+            </td>
+            <td>
+                {
+                    objdrag ?
+                    <a className="Src_Id" href="#" onClick={ (ev) => evhan_click_id(ev, 'OBJ:'+objdrag.name) }>{ objdrag.name }</a>
                     : '\u2014'
                 }
             </td>
