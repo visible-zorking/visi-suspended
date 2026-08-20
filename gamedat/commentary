@@ -151,6 +151,8 @@ glob:CROWDED: Messages for successfully resolving an ambiguous object in a `QUER
 
 glob:NOT-FOUND: Messages for failing to find an object in a `QUERY ABOUT` action. See [this parser code|src:PARSER-1087].
 
+obj:CIRCLE1: The eight key-code fragments are of course taken from various “metasyntactic variables” of hacker lore: `FOO`, `BAR`, `MUMBLE`, and so on. These were habitual with the Infocom nerds. See also the Frobozz Corporation, Belboz the Enchanter, the city of Borphee, and on and on.
+
 
 glob:COR-1: The nine `COR-N` tables define nine corridors of rooms that have sight-lines to each other. Each room in a corridor has that bit set in its [prop:CORRIDOR] property.
 	This permits the game to display messages like “Poet is off to the northeast.”
