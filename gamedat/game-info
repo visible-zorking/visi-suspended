@@ -513,6 +513,7 @@ RoutineType - G-PEOPLE OBJ -
 RoutineType - GAME-COMMAND? ACTION
 RoutineType - GOAL? OBJ
 RoutineType - GWIM ATTRZ SLOCBITS PREP
+RoutineType - HELD? OBJ
 RoutineType - IN-MOTION? OBJ
 RoutineType - ITAKE-CHECK TABLE SLOCBITS
 RoutineType - JIGS-UP STR OBJ
