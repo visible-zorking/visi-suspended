@@ -218,7 +218,7 @@ export function AboutPage()
                 </p>
                 <p>
                     <i>Suspended</i> itself was originally written
-                    by Michael Berlyn.
+                    by Michael Berlyn and Muffy Berlyn (uncredited).
                     It is copyright 1983 (etc) by Infocom,
                     then Activision, then renamed to Mediagenic,
                     then Bobby Kotick bought it and renamed it Activision,
