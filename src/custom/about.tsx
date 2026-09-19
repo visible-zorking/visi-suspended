@@ -146,9 +146,10 @@ export function AboutPage()
                 <h2>About this release</h2>
                 <p>
                     <i>Suspended</i> was the first Infocom game designed by
-                    Michael Berlyn. Berlyn was not one of the original{' '}
-                    <i>Zork</i> creators, but he was already an industry veteran
-                    with the adventure games <i>Oo-Topos</i> and
+                    Michael and Muffy Berlyn. The Berlyns were not among
+                    the original <i>Zork</i> creators, but they were already
+                    industry veterans with the adventure games
+                    {' '}<i>Oo-Topos</i> and
                     {' '}<i>Cyborg</i> (Sentient Software).
                 </p>
                 <p>
